@@ -187,6 +187,8 @@ class ApiClient {
           return BloodPressureDto.fromJson(value);
         case 'BodyDto':
           return BodyDto.fromJson(value);
+        case 'DeviceDto':
+          return DeviceDto.fromJson(value);
         case 'ECGDto':
           return ECGDto.fromJson(value);
         case 'HeartRateDto':

@@ -27,12 +27,14 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/devices_api.dart';
 part 'api/health_api.dart';
 part 'api/summary_api.dart';
 
 part 'model/activity_dto.dart';
 part 'model/blood_pressure_dto.dart';
 part 'model/body_dto.dart';
+part 'model/device_dto.dart';
 part 'model/ecg_dto.dart';
 part 'model/heart_rate_dto.dart';
 part 'model/summary_dto.dart';
