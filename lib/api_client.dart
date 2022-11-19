@@ -183,6 +183,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'ActivityDto':
           return ActivityDto.fromJson(value);
+        case 'BarChartData':
+          return BarChartData.fromJson(value);
         case 'BloodPressureDto':
           return BloodPressureDto.fromJson(value);
         case 'BodyDto':
@@ -191,6 +193,8 @@ class ApiClient {
           return DeviceDto.fromJson(value);
         case 'ECGDto':
           return ECGDto.fromJson(value);
+        case 'GetWeightQuery':
+          return GetWeightQuery.fromJson(value);
         case 'HeartRateDto':
           return HeartRateDto.fromJson(value);
         case 'SummaryDto':
