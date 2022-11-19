@@ -18,6 +18,7 @@ class DeviceDto {
     this.battery,
     this.created,
     this.measured,
+    this.active,
   });
 
   String? type;
@@ -42,13 +43,22 @@ class DeviceDto {
   ///
   DateTime? measured;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? active;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceDto &&
      other.type == type &&
      other.model == model &&
      other.battery == battery &&
      other.created == created &&
-     other.measured == measured;
+     other.measured == measured &&
+     other.active == active;
 
   @override
   int get hashCode =>
@@ -57,10 +67,11 @@ class DeviceDto {
     (model == null ? 0 : model!.hashCode) +
     (battery == null ? 0 : battery!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
-    (measured == null ? 0 : measured!.hashCode);
+    (measured == null ? 0 : measured!.hashCode) +
+    (active == null ? 0 : active!.hashCode);
 
   @override
-  String toString() => 'DeviceDto[type=$type, model=$model, battery=$battery, created=$created, measured=$measured]';
+  String toString() => 'DeviceDto[type=$type, model=$model, battery=$battery, created=$created, measured=$measured, active=$active]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -89,6 +100,11 @@ class DeviceDto {
     } else {
       json[r'measured'] = null;
     }
+    if (this.active != null) {
+      json[r'active'] = this.active;
+    } else {
+      json[r'active'] = null;
+    }
     return json;
   }
 
@@ -116,6 +132,7 @@ class DeviceDto {
         battery: mapValueOfType<String>(json, r'battery'),
         created: mapDateTime(json, r'created', ''),
         measured: mapDateTime(json, r'measured', ''),
+        active: mapValueOfType<bool>(json, r'active'),
       );
     }
     return null;
