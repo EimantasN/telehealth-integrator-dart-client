@@ -16,7 +16,8 @@ class DeviceDto {
     this.type,
     this.model,
     this.battery,
-    this.lastSessionDate,
+    this.created,
+    this.measured,
   });
 
   String? type;
@@ -31,14 +32,23 @@ class DeviceDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? lastSessionDate;
+  DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? measured;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceDto &&
      other.type == type &&
      other.model == model &&
      other.battery == battery &&
-     other.lastSessionDate == lastSessionDate;
+     other.created == created &&
+     other.measured == measured;
 
   @override
   int get hashCode =>
@@ -46,10 +56,11 @@ class DeviceDto {
     (type == null ? 0 : type!.hashCode) +
     (model == null ? 0 : model!.hashCode) +
     (battery == null ? 0 : battery!.hashCode) +
-    (lastSessionDate == null ? 0 : lastSessionDate!.hashCode);
+    (created == null ? 0 : created!.hashCode) +
+    (measured == null ? 0 : measured!.hashCode);
 
   @override
-  String toString() => 'DeviceDto[type=$type, model=$model, battery=$battery, lastSessionDate=$lastSessionDate]';
+  String toString() => 'DeviceDto[type=$type, model=$model, battery=$battery, created=$created, measured=$measured]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -68,10 +79,15 @@ class DeviceDto {
     } else {
       json[r'battery'] = null;
     }
-    if (this.lastSessionDate != null) {
-      json[r'lastSessionDate'] = this.lastSessionDate!.toUtc().toIso8601String();
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
     } else {
-      json[r'lastSessionDate'] = null;
+      json[r'created'] = null;
+    }
+    if (this.measured != null) {
+      json[r'measured'] = this.measured!.toUtc().toIso8601String();
+    } else {
+      json[r'measured'] = null;
     }
     return json;
   }
@@ -98,7 +114,8 @@ class DeviceDto {
         type: mapValueOfType<String>(json, r'type'),
         model: mapValueOfType<String>(json, r'model'),
         battery: mapValueOfType<String>(json, r'battery'),
-        lastSessionDate: mapDateTime(json, r'lastSessionDate', ''),
+        created: mapDateTime(json, r'created', ''),
+        measured: mapDateTime(json, r'measured', ''),
       );
     }
     return null;
