@@ -34,11 +34,11 @@ part 'api/summary_api.dart';
 
 part 'model/activity_dto.dart';
 part 'model/bar_chart_data.dart';
+part 'model/bar_chart_query.dart';
 part 'model/blood_pressure_dto.dart';
 part 'model/body_dto.dart';
 part 'model/device_dto.dart';
 part 'model/ecg_dto.dart';
-part 'model/get_weight_query.dart';
 part 'model/heart_rate_dto.dart';
 part 'model/summary_dto.dart';
 

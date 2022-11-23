@@ -185,6 +185,8 @@ class ApiClient {
           return ActivityDto.fromJson(value);
         case 'BarChartData':
           return BarChartData.fromJson(value);
+        case 'BarChartQuery':
+          return BarChartQuery.fromJson(value);
         case 'BloodPressureDto':
           return BloodPressureDto.fromJson(value);
         case 'BodyDto':
@@ -193,8 +195,6 @@ class ApiClient {
           return DeviceDto.fromJson(value);
         case 'ECGDto':
           return ECGDto.fromJson(value);
-        case 'GetWeightQuery':
-          return GetWeightQuery.fromJson(value);
         case 'HeartRateDto':
           return HeartRateDto.fromJson(value);
         case 'SummaryDto':
