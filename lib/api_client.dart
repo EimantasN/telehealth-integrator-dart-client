@@ -195,6 +195,8 @@ class ApiClient {
           return DeviceDto.fromJson(value);
         case 'ECGDto':
           return ECGDto.fromJson(value);
+        case 'EcgListDto':
+          return EcgListDto.fromJson(value);
         case 'HeartRateDto':
           return HeartRateDto.fromJson(value);
         case 'SummaryDto':
