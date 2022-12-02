@@ -13,10 +13,8 @@ part of openapi.api;
 class BarChartQuery {
   /// Returns a new [BarChartQuery] instance.
   BarChartQuery({
-    this.day,
-    this.week,
-    this.month,
-    this.year,
+    this.start,
+    this.end,
     this.groupByMonth,
   });
 
@@ -26,7 +24,7 @@ class BarChartQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? day;
+  DateTime? start;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -34,23 +32,7 @@ class BarChartQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? week;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? month;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? year;
+  DateTime? end;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -62,45 +44,31 @@ class BarChartQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BarChartQuery &&
-     other.day == day &&
-     other.week == week &&
-     other.month == month &&
-     other.year == year &&
+     other.start == start &&
+     other.end == end &&
      other.groupByMonth == groupByMonth;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (day == null ? 0 : day!.hashCode) +
-    (week == null ? 0 : week!.hashCode) +
-    (month == null ? 0 : month!.hashCode) +
-    (year == null ? 0 : year!.hashCode) +
+    (start == null ? 0 : start!.hashCode) +
+    (end == null ? 0 : end!.hashCode) +
     (groupByMonth == null ? 0 : groupByMonth!.hashCode);
 
   @override
-  String toString() => 'BarChartQuery[day=$day, week=$week, month=$month, year=$year, groupByMonth=$groupByMonth]';
+  String toString() => 'BarChartQuery[start=$start, end=$end, groupByMonth=$groupByMonth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.day != null) {
-      json[r'day'] = this.day;
+    if (this.start != null) {
+      json[r'start'] = this.start!.toUtc().toIso8601String();
     } else {
-      json[r'day'] = null;
+      json[r'start'] = null;
     }
-    if (this.week != null) {
-      json[r'week'] = this.week;
+    if (this.end != null) {
+      json[r'end'] = this.end!.toUtc().toIso8601String();
     } else {
-      json[r'week'] = null;
-    }
-    if (this.month != null) {
-      json[r'month'] = this.month;
-    } else {
-      json[r'month'] = null;
-    }
-    if (this.year != null) {
-      json[r'year'] = this.year;
-    } else {
-      json[r'year'] = null;
+      json[r'end'] = null;
     }
     if (this.groupByMonth != null) {
       json[r'groupByMonth'] = this.groupByMonth;
@@ -129,10 +97,8 @@ class BarChartQuery {
       }());
 
       return BarChartQuery(
-        day: mapValueOfType<bool>(json, r'day'),
-        week: mapValueOfType<bool>(json, r'week'),
-        month: mapValueOfType<bool>(json, r'month'),
-        year: mapValueOfType<bool>(json, r'year'),
+        start: mapDateTime(json, r'start', ''),
+        end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
       );
     }
