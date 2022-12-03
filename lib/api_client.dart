@@ -197,6 +197,10 @@ class ApiClient {
           return ECGDto.fromJson(value);
         case 'EcgListDto':
           return EcgListDto.fromJson(value);
+        case 'GetMeasureBarChartDataQuery':
+          return GetMeasureBarChartDataQuery.fromJson(value);
+        case 'GetMeasureBarChartDataQueryAllOf':
+          return GetMeasureBarChartDataQueryAllOf.fromJson(value);
         case 'HeartRateDto':
           return HeartRateDto.fromJson(value);
         case 'SummaryDto':

@@ -27,8 +27,8 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
-part 'api/body_api.dart';
 part 'api/devices_api.dart';
+part 'api/graph_api.dart';
 part 'api/health_api.dart';
 part 'api/heart_api.dart';
 part 'api/summary_api.dart';
@@ -41,6 +41,8 @@ part 'model/body_dto.dart';
 part 'model/device_dto.dart';
 part 'model/ecg_dto.dart';
 part 'model/ecg_list_dto.dart';
+part 'model/get_measure_bar_chart_data_query.dart';
+part 'model/get_measure_bar_chart_data_query_all_of.dart';
 part 'model/heart_rate_dto.dart';
 part 'model/summary_dto.dart';
 
