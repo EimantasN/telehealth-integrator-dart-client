@@ -32,6 +32,7 @@ part 'api/graph_api.dart';
 part 'api/health_api.dart';
 part 'api/heart_api.dart';
 part 'api/summary_api.dart';
+part 'api/sync_api.dart';
 
 part 'model/activity_dto.dart';
 part 'model/bar_chart_data.dart';
