@@ -207,8 +207,12 @@ class ApiClient {
           return GetMeasureBarChartDataQuery.fromJson(value);
         case 'GetMeasureBarChartDataQueryAllOf':
           return GetMeasureBarChartDataQueryAllOf.fromJson(value);
+        case 'GetSleepDataQuery':
+          return GetSleepDataQuery.fromJson(value);
         case 'HeartRateDto':
           return HeartRateDto.fromJson(value);
+        case 'SleepDataDto':
+          return SleepDataDto.fromJson(value);
         case 'SummaryDto':
           return SummaryDto.fromJson(value);
         default:
