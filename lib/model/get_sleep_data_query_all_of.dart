@@ -10,41 +10,14 @@
 
 part of openapi.api;
 
-class GetSleepDataQuery {
-  /// Returns a new [GetSleepDataQuery] instance.
-  GetSleepDataQuery({
-    this.start,
-    this.end,
-    this.groupByMonth,
+class GetSleepDataQueryAllOf {
+  /// Returns a new [GetSleepDataQueryAllOf] instance.
+  GetSleepDataQueryAllOf({
     this.awake,
     this.light,
     this.deep,
     this.score,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? start;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? end;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? groupByMonth;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -79,10 +52,7 @@ class GetSleepDataQuery {
   bool? score;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetSleepDataQuery &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth &&
+  bool operator ==(Object other) => identical(this, other) || other is GetSleepDataQueryAllOf &&
      other.awake == awake &&
      other.light == light &&
      other.deep == deep &&
@@ -91,34 +61,16 @@ class GetSleepDataQuery {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (start == null ? 0 : start!.hashCode) +
-    (end == null ? 0 : end!.hashCode) +
-    (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
     (awake == null ? 0 : awake!.hashCode) +
     (light == null ? 0 : light!.hashCode) +
     (deep == null ? 0 : deep!.hashCode) +
     (score == null ? 0 : score!.hashCode);
 
   @override
-  String toString() => 'GetSleepDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, awake=$awake, light=$light, deep=$deep, score=$score]';
+  String toString() => 'GetSleepDataQueryAllOf[awake=$awake, light=$light, deep=$deep, score=$score]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.start != null) {
-      json[r'start'] = this.start!.toUtc().toIso8601String();
-    } else {
-      json[r'start'] = null;
-    }
-    if (this.end != null) {
-      json[r'end'] = this.end!.toUtc().toIso8601String();
-    } else {
-      json[r'end'] = null;
-    }
-    if (this.groupByMonth != null) {
-      json[r'groupByMonth'] = this.groupByMonth;
-    } else {
-      json[r'groupByMonth'] = null;
-    }
     if (this.awake != null) {
       json[r'awake'] = this.awake;
     } else {
@@ -142,10 +94,10 @@ class GetSleepDataQuery {
     return json;
   }
 
-  /// Returns a new [GetSleepDataQuery] instance and imports its values from
+  /// Returns a new [GetSleepDataQueryAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetSleepDataQuery? fromJson(dynamic value) {
+  static GetSleepDataQueryAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -154,16 +106,13 @@ class GetSleepDataQuery {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetSleepDataQuery[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetSleepDataQuery[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetSleepDataQueryAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetSleepDataQueryAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetSleepDataQuery(
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
-        groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
+      return GetSleepDataQueryAllOf(
         awake: mapValueOfType<bool>(json, r'awake'),
         light: mapValueOfType<bool>(json, r'light'),
         deep: mapValueOfType<bool>(json, r'deep'),
@@ -173,11 +122,11 @@ class GetSleepDataQuery {
     return null;
   }
 
-  static List<GetSleepDataQuery>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetSleepDataQuery>[];
+  static List<GetSleepDataQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GetSleepDataQueryAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetSleepDataQuery.fromJson(row);
+        final value = GetSleepDataQueryAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -186,12 +135,12 @@ class GetSleepDataQuery {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetSleepDataQuery> mapFromJson(dynamic json) {
-    final map = <String, GetSleepDataQuery>{};
+  static Map<String, GetSleepDataQueryAllOf> mapFromJson(dynamic json) {
+    final map = <String, GetSleepDataQueryAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetSleepDataQuery.fromJson(entry.value);
+        final value = GetSleepDataQueryAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -200,13 +149,13 @@ class GetSleepDataQuery {
     return map;
   }
 
-  // maps a json object with a list of GetSleepDataQuery-objects as value to a dart map
-  static Map<String, List<GetSleepDataQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetSleepDataQuery>>{};
+  // maps a json object with a list of GetSleepDataQueryAllOf-objects as value to a dart map
+  static Map<String, List<GetSleepDataQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GetSleepDataQueryAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetSleepDataQuery.listFromJson(entry.value, growable: growable,);
+        final value = GetSleepDataQueryAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

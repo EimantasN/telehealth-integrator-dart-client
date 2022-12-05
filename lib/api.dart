@@ -49,6 +49,7 @@ part 'model/get_heart_rate_data_query.dart';
 part 'model/get_measure_bar_chart_data_query.dart';
 part 'model/get_measure_bar_chart_data_query_all_of.dart';
 part 'model/get_sleep_data_query.dart';
+part 'model/get_sleep_data_query_all_of.dart';
 part 'model/heart_rate_dto.dart';
 part 'model/sleep_data_dto.dart';
 part 'model/summary_dto.dart';
