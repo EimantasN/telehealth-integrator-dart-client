@@ -29,7 +29,6 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/devices_api.dart';
 part 'api/graph_api.dart';
-part 'api/health_api.dart';
 part 'api/heart_api.dart';
 part 'api/summary_api.dart';
 part 'api/sync_api.dart';
