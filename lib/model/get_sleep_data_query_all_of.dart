@@ -17,46 +17,26 @@ class GetSleepDataQueryAllOf {
     this.light,
     this.deep,
     this.score,
+    this.duration,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? awake;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? light;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? deep;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? score;
+
+  bool? duration;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetSleepDataQueryAllOf &&
      other.awake == awake &&
      other.light == light &&
      other.deep == deep &&
-     other.score == score;
+     other.score == score &&
+     other.duration == duration;
 
   @override
   int get hashCode =>
@@ -64,10 +44,11 @@ class GetSleepDataQueryAllOf {
     (awake == null ? 0 : awake!.hashCode) +
     (light == null ? 0 : light!.hashCode) +
     (deep == null ? 0 : deep!.hashCode) +
-    (score == null ? 0 : score!.hashCode);
+    (score == null ? 0 : score!.hashCode) +
+    (duration == null ? 0 : duration!.hashCode);
 
   @override
-  String toString() => 'GetSleepDataQueryAllOf[awake=$awake, light=$light, deep=$deep, score=$score]';
+  String toString() => 'GetSleepDataQueryAllOf[awake=$awake, light=$light, deep=$deep, score=$score, duration=$duration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -90,6 +71,11 @@ class GetSleepDataQueryAllOf {
       json[r'score'] = this.score;
     } else {
       json[r'score'] = null;
+    }
+    if (this.duration != null) {
+      json[r'duration'] = this.duration;
+    } else {
+      json[r'duration'] = null;
     }
     return json;
   }
@@ -117,6 +103,7 @@ class GetSleepDataQueryAllOf {
         light: mapValueOfType<bool>(json, r'light'),
         deep: mapValueOfType<bool>(json, r'deep'),
         score: mapValueOfType<bool>(json, r'score'),
+        duration: mapValueOfType<bool>(json, r'duration'),
       );
     }
     return null;

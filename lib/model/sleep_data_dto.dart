@@ -17,6 +17,7 @@ class SleepDataDto {
     this.light = const [],
     this.deep = const [],
     this.score = const [],
+    this.duration = const [],
   });
 
   List<BarChartData> awake;
@@ -27,12 +28,15 @@ class SleepDataDto {
 
   List<BarChartData> score;
 
+  List<BarChartData> duration;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is SleepDataDto &&
      other.awake == awake &&
      other.light == light &&
      other.deep == deep &&
-     other.score == score;
+     other.score == score &&
+     other.duration == duration;
 
   @override
   int get hashCode =>
@@ -40,10 +44,11 @@ class SleepDataDto {
     (awake.hashCode) +
     (light.hashCode) +
     (deep.hashCode) +
-    (score.hashCode);
+    (score.hashCode) +
+    (duration.hashCode);
 
   @override
-  String toString() => 'SleepDataDto[awake=$awake, light=$light, deep=$deep, score=$score]';
+  String toString() => 'SleepDataDto[awake=$awake, light=$light, deep=$deep, score=$score, duration=$duration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -51,6 +56,7 @@ class SleepDataDto {
       json[r'light'] = this.light;
       json[r'deep'] = this.deep;
       json[r'score'] = this.score;
+      json[r'duration'] = this.duration;
     return json;
   }
 
@@ -77,6 +83,7 @@ class SleepDataDto {
         light: BarChartData.listFromJson(json[r'light']) ?? const [],
         deep: BarChartData.listFromJson(json[r'deep']) ?? const [],
         score: BarChartData.listFromJson(json[r'score']) ?? const [],
+        duration: BarChartData.listFromJson(json[r'duration']) ?? const [],
       );
     }
     return null;
