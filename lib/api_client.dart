@@ -195,10 +195,14 @@ class ApiClient {
           return BodyDto.fromJson(value);
         case 'DeviceDto':
           return DeviceDto.fromJson(value);
+        case 'DisableDevicesCmd':
+          return DisableDevicesCmd.fromJson(value);
         case 'ECGDto':
           return ECGDto.fromJson(value);
         case 'EcgListDto':
           return EcgListDto.fromJson(value);
+        case 'EnableDevicesCmd':
+          return EnableDevicesCmd.fromJson(value);
         case 'GetBloodPressureDataQuery':
           return GetBloodPressureDataQuery.fromJson(value);
         case 'GetHeartRateDataQuery':
