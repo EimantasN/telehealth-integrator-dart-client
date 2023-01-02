@@ -34,6 +34,7 @@ part 'api/summary_api.dart';
 part 'api/sync_api.dart';
 part 'api/wi_things_api.dart';
 
+part 'model/activity_data_dto.dart';
 part 'model/activity_dto.dart';
 part 'model/bar_chart_data.dart';
 part 'model/bar_chart_query.dart';
@@ -45,6 +46,8 @@ part 'model/disable_devices_cmd.dart';
 part 'model/ecg_dto.dart';
 part 'model/ecg_list_dto.dart';
 part 'model/enable_devices_cmd.dart';
+part 'model/get_activity_chart_data_query.dart';
+part 'model/get_activity_chart_data_query_all_of.dart';
 part 'model/get_blood_pressure_data_query.dart';
 part 'model/get_heart_rate_data_query.dart';
 part 'model/get_measure_bar_chart_data_query.dart';

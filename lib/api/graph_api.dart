@@ -19,13 +19,13 @@ class GraphApi {
   /// Performs an HTTP 'POST /api/Graph/Activity' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [GetSleepDataQuery] getSleepDataQuery (required):
-  Future<Response> graphActivityWithHttpInfo(GetSleepDataQuery getSleepDataQuery,) async {
+  /// * [GetActivityChartDataQuery] getActivityChartDataQuery (required):
+  Future<Response> graphActivityWithHttpInfo(GetActivityChartDataQuery getActivityChartDataQuery,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Graph/Activity';
 
     // ignore: prefer_final_locals
-    Object? postBody = getSleepDataQuery;
+    Object? postBody = getActivityChartDataQuery;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -47,9 +47,9 @@ class GraphApi {
 
   /// Parameters:
   ///
-  /// * [GetSleepDataQuery] getSleepDataQuery (required):
-  Future<SleepDataDto?> graphActivity(GetSleepDataQuery getSleepDataQuery,) async {
-    final response = await graphActivityWithHttpInfo(getSleepDataQuery,);
+  /// * [GetActivityChartDataQuery] getActivityChartDataQuery (required):
+  Future<ActivityDataDto?> graphActivity(GetActivityChartDataQuery getActivityChartDataQuery,) async {
+    final response = await graphActivityWithHttpInfo(getActivityChartDataQuery,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -57,7 +57,7 @@ class GraphApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SleepDataDto',) as SleepDataDto;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDataDto',) as ActivityDataDto;
     
     }
     return null;

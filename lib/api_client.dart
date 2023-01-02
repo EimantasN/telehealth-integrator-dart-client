@@ -181,6 +181,8 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'ActivityDataDto':
+          return ActivityDataDto.fromJson(value);
         case 'ActivityDto':
           return ActivityDto.fromJson(value);
         case 'BarChartData':
@@ -203,6 +205,10 @@ class ApiClient {
           return EcgListDto.fromJson(value);
         case 'EnableDevicesCmd':
           return EnableDevicesCmd.fromJson(value);
+        case 'GetActivityChartDataQuery':
+          return GetActivityChartDataQuery.fromJson(value);
+        case 'GetActivityChartDataQueryAllOf':
+          return GetActivityChartDataQueryAllOf.fromJson(value);
         case 'GetBloodPressureDataQuery':
           return GetBloodPressureDataQuery.fromJson(value);
         case 'GetHeartRateDataQuery':
