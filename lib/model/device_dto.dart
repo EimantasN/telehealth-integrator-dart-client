@@ -13,6 +13,7 @@ part of openapi.api;
 class DeviceDto {
   /// Returns a new [DeviceDto] instance.
   DeviceDto({
+    this.deviceid,
     this.type,
     this.model,
     this.battery,
@@ -20,6 +21,8 @@ class DeviceDto {
     this.measured,
     this.active,
   });
+
+  String? deviceid;
 
   String? type;
 
@@ -53,6 +56,7 @@ class DeviceDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceDto &&
+     other.deviceid == deviceid &&
      other.type == type &&
      other.model == model &&
      other.battery == battery &&
@@ -63,6 +67,7 @@ class DeviceDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (deviceid == null ? 0 : deviceid!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
     (model == null ? 0 : model!.hashCode) +
     (battery == null ? 0 : battery!.hashCode) +
@@ -71,10 +76,15 @@ class DeviceDto {
     (active == null ? 0 : active!.hashCode);
 
   @override
-  String toString() => 'DeviceDto[type=$type, model=$model, battery=$battery, created=$created, measured=$measured, active=$active]';
+  String toString() => 'DeviceDto[deviceid=$deviceid, type=$type, model=$model, battery=$battery, created=$created, measured=$measured, active=$active]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.deviceid != null) {
+      json[r'deviceid'] = this.deviceid;
+    } else {
+      json[r'deviceid'] = null;
+    }
     if (this.type != null) {
       json[r'type'] = this.type;
     } else {
@@ -127,6 +137,7 @@ class DeviceDto {
       }());
 
       return DeviceDto(
+        deviceid: mapValueOfType<String>(json, r'deviceid'),
         type: mapValueOfType<String>(json, r'type'),
         model: mapValueOfType<String>(json, r'model'),
         battery: mapValueOfType<String>(json, r'battery'),
