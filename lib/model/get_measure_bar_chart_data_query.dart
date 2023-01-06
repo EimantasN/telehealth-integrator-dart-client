@@ -16,6 +16,7 @@ class GetMeasureBarChartDataQuery {
     this.start,
     this.end,
     this.groupByMonth,
+    this.isDoctor,
     this.measure,
   });
 
@@ -49,6 +50,14 @@ class GetMeasureBarChartDataQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? isDoctor;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? measure;
 
   @override
@@ -56,6 +65,7 @@ class GetMeasureBarChartDataQuery {
      other.start == start &&
      other.end == end &&
      other.groupByMonth == groupByMonth &&
+     other.isDoctor == isDoctor &&
      other.measure == measure;
 
   @override
@@ -64,10 +74,11 @@ class GetMeasureBarChartDataQuery {
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
+    (isDoctor == null ? 0 : isDoctor!.hashCode) +
     (measure == null ? 0 : measure!.hashCode);
 
   @override
-  String toString() => 'GetMeasureBarChartDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, measure=$measure]';
+  String toString() => 'GetMeasureBarChartDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, isDoctor=$isDoctor, measure=$measure]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -85,6 +96,11 @@ class GetMeasureBarChartDataQuery {
       json[r'groupByMonth'] = this.groupByMonth;
     } else {
       json[r'groupByMonth'] = null;
+    }
+    if (this.isDoctor != null) {
+      json[r'isDoctor'] = this.isDoctor;
+    } else {
+      json[r'isDoctor'] = null;
     }
     if (this.measure != null) {
       json[r'measure'] = this.measure;
@@ -116,6 +132,7 @@ class GetMeasureBarChartDataQuery {
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
+        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
         measure: mapValueOfType<int>(json, r'measure'),
       );
     }

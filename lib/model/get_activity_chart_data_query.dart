@@ -16,6 +16,7 @@ class GetActivityChartDataQuery {
     this.start,
     this.end,
     this.groupByMonth,
+    this.isDoctor,
     this.steps,
     this.distance,
   });
@@ -50,6 +51,14 @@ class GetActivityChartDataQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? isDoctor;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? steps;
 
   ///
@@ -65,6 +74,7 @@ class GetActivityChartDataQuery {
      other.start == start &&
      other.end == end &&
      other.groupByMonth == groupByMonth &&
+     other.isDoctor == isDoctor &&
      other.steps == steps &&
      other.distance == distance;
 
@@ -74,11 +84,12 @@ class GetActivityChartDataQuery {
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
+    (isDoctor == null ? 0 : isDoctor!.hashCode) +
     (steps == null ? 0 : steps!.hashCode) +
     (distance == null ? 0 : distance!.hashCode);
 
   @override
-  String toString() => 'GetActivityChartDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, steps=$steps, distance=$distance]';
+  String toString() => 'GetActivityChartDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, isDoctor=$isDoctor, steps=$steps, distance=$distance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +107,11 @@ class GetActivityChartDataQuery {
       json[r'groupByMonth'] = this.groupByMonth;
     } else {
       json[r'groupByMonth'] = null;
+    }
+    if (this.isDoctor != null) {
+      json[r'isDoctor'] = this.isDoctor;
+    } else {
+      json[r'isDoctor'] = null;
     }
     if (this.steps != null) {
       json[r'steps'] = this.steps;
@@ -132,6 +148,7 @@ class GetActivityChartDataQuery {
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
+        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
         steps: mapValueOfType<bool>(json, r'steps'),
         distance: mapValueOfType<bool>(json, r'distance'),
       );

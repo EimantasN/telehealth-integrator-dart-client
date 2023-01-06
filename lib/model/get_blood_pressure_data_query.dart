@@ -16,6 +16,7 @@ class GetBloodPressureDataQuery {
     this.start,
     this.end,
     this.groupByMonth,
+    this.isDoctor,
   });
 
   ///
@@ -42,21 +43,31 @@ class GetBloodPressureDataQuery {
   ///
   bool? groupByMonth;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isDoctor;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetBloodPressureDataQuery &&
      other.start == start &&
      other.end == end &&
-     other.groupByMonth == groupByMonth;
+     other.groupByMonth == groupByMonth &&
+     other.isDoctor == isDoctor;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
-    (groupByMonth == null ? 0 : groupByMonth!.hashCode);
+    (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
+    (isDoctor == null ? 0 : isDoctor!.hashCode);
 
   @override
-  String toString() => 'GetBloodPressureDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth]';
+  String toString() => 'GetBloodPressureDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, isDoctor=$isDoctor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -74,6 +85,11 @@ class GetBloodPressureDataQuery {
       json[r'groupByMonth'] = this.groupByMonth;
     } else {
       json[r'groupByMonth'] = null;
+    }
+    if (this.isDoctor != null) {
+      json[r'isDoctor'] = this.isDoctor;
+    } else {
+      json[r'isDoctor'] = null;
     }
     return json;
   }
@@ -100,6 +116,7 @@ class GetBloodPressureDataQuery {
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
+        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
       );
     }
     return null;

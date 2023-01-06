@@ -16,6 +16,7 @@ class GetSleepDataQuery {
     this.start,
     this.end,
     this.groupByMonth,
+    this.isDoctor,
     this.awake,
     this.light,
     this.deep,
@@ -47,6 +48,14 @@ class GetSleepDataQuery {
   ///
   bool? groupByMonth;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isDoctor;
+
   bool? awake;
 
   bool? light;
@@ -62,6 +71,7 @@ class GetSleepDataQuery {
      other.start == start &&
      other.end == end &&
      other.groupByMonth == groupByMonth &&
+     other.isDoctor == isDoctor &&
      other.awake == awake &&
      other.light == light &&
      other.deep == deep &&
@@ -74,6 +84,7 @@ class GetSleepDataQuery {
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
+    (isDoctor == null ? 0 : isDoctor!.hashCode) +
     (awake == null ? 0 : awake!.hashCode) +
     (light == null ? 0 : light!.hashCode) +
     (deep == null ? 0 : deep!.hashCode) +
@@ -81,7 +92,7 @@ class GetSleepDataQuery {
     (duration == null ? 0 : duration!.hashCode);
 
   @override
-  String toString() => 'GetSleepDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, awake=$awake, light=$light, deep=$deep, score=$score, duration=$duration]';
+  String toString() => 'GetSleepDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, isDoctor=$isDoctor, awake=$awake, light=$light, deep=$deep, score=$score, duration=$duration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -99,6 +110,11 @@ class GetSleepDataQuery {
       json[r'groupByMonth'] = this.groupByMonth;
     } else {
       json[r'groupByMonth'] = null;
+    }
+    if (this.isDoctor != null) {
+      json[r'isDoctor'] = this.isDoctor;
+    } else {
+      json[r'isDoctor'] = null;
     }
     if (this.awake != null) {
       json[r'awake'] = this.awake;
@@ -150,6 +166,7 @@ class GetSleepDataQuery {
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
+        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
         awake: mapValueOfType<bool>(json, r'awake'),
         light: mapValueOfType<bool>(json, r'light'),
         deep: mapValueOfType<bool>(json, r'deep'),
