@@ -21,6 +21,8 @@ class UpdateDeviceCmdDevice {
     this.hashDeviceid,
     this.timezone,
     this.lastSessionDate,
+    this.created,
+    this.measured,
     this.active,
     this.measures = const [],
   });
@@ -95,6 +97,22 @@ class UpdateDeviceCmdDevice {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? measured;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? active;
 
   List<DeviceMeasureDto> measures;
@@ -109,6 +127,8 @@ class UpdateDeviceCmdDevice {
      other.hashDeviceid == hashDeviceid &&
      other.timezone == timezone &&
      other.lastSessionDate == lastSessionDate &&
+     other.created == created &&
+     other.measured == measured &&
      other.active == active &&
      other.measures == measures;
 
@@ -123,11 +143,13 @@ class UpdateDeviceCmdDevice {
     (hashDeviceid == null ? 0 : hashDeviceid!.hashCode) +
     (timezone == null ? 0 : timezone!.hashCode) +
     (lastSessionDate == null ? 0 : lastSessionDate!.hashCode) +
+    (created == null ? 0 : created!.hashCode) +
+    (measured == null ? 0 : measured!.hashCode) +
     (active == null ? 0 : active!.hashCode) +
     (measures.hashCode);
 
   @override
-  String toString() => 'UpdateDeviceCmdDevice[type=$type, model=$model, modelId=$modelId, battery=$battery, deviceid=$deviceid, hashDeviceid=$hashDeviceid, timezone=$timezone, lastSessionDate=$lastSessionDate, active=$active, measures=$measures]';
+  String toString() => 'UpdateDeviceCmdDevice[type=$type, model=$model, modelId=$modelId, battery=$battery, deviceid=$deviceid, hashDeviceid=$hashDeviceid, timezone=$timezone, lastSessionDate=$lastSessionDate, created=$created, measured=$measured, active=$active, measures=$measures]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -171,6 +193,16 @@ class UpdateDeviceCmdDevice {
     } else {
       json[r'lastSessionDate'] = null;
     }
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
+    } else {
+      json[r'created'] = null;
+    }
+    if (this.measured != null) {
+      json[r'measured'] = this.measured!.toUtc().toIso8601String();
+    } else {
+      json[r'measured'] = null;
+    }
     if (this.active != null) {
       json[r'active'] = this.active;
     } else {
@@ -207,6 +239,8 @@ class UpdateDeviceCmdDevice {
         hashDeviceid: mapValueOfType<String>(json, r'hashDeviceid'),
         timezone: mapValueOfType<String>(json, r'timezone'),
         lastSessionDate: mapValueOfType<int>(json, r'lastSessionDate'),
+        created: mapDateTime(json, r'created', ''),
+        measured: mapDateTime(json, r'measured', ''),
         active: mapValueOfType<bool>(json, r'active'),
         measures: DeviceMeasureDto.listFromJson(json[r'measures']) ?? const [],
       );
