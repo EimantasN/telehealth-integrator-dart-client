@@ -10,25 +10,21 @@
 
 part of openapi.api;
 
-class DeviceDto {
-  /// Returns a new [DeviceDto] instance.
-  DeviceDto({
-    this.deviceid,
-    this.type,
-    this.model,
-    this.battery,
-    this.created,
-    this.measured,
+class DeviceMeasureDto {
+  /// Returns a new [DeviceMeasureDto] instance.
+  DeviceMeasureDto({
+    this.deviceId,
+    this.measure,
     this.active,
   });
 
-  String? deviceid;
-
-  String? type;
-
-  String? model;
-
-  String? battery;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? deviceId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -36,15 +32,7 @@ class DeviceDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? created;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? measured;
+  String? measure;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -55,60 +43,32 @@ class DeviceDto {
   bool? active;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is DeviceDto &&
-     other.deviceid == deviceid &&
-     other.type == type &&
-     other.model == model &&
-     other.battery == battery &&
-     other.created == created &&
-     other.measured == measured &&
+  bool operator ==(Object other) => identical(this, other) || other is DeviceMeasureDto &&
+     other.deviceId == deviceId &&
+     other.measure == measure &&
      other.active == active;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (deviceid == null ? 0 : deviceid!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (model == null ? 0 : model!.hashCode) +
-    (battery == null ? 0 : battery!.hashCode) +
-    (created == null ? 0 : created!.hashCode) +
-    (measured == null ? 0 : measured!.hashCode) +
+    (deviceId == null ? 0 : deviceId!.hashCode) +
+    (measure == null ? 0 : measure!.hashCode) +
     (active == null ? 0 : active!.hashCode);
 
   @override
-  String toString() => 'DeviceDto[deviceid=$deviceid, type=$type, model=$model, battery=$battery, created=$created, measured=$measured, active=$active]';
+  String toString() => 'DeviceMeasureDto[deviceId=$deviceId, measure=$measure, active=$active]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.deviceid != null) {
-      json[r'deviceid'] = this.deviceid;
+    if (this.deviceId != null) {
+      json[r'deviceId'] = this.deviceId;
     } else {
-      json[r'deviceid'] = null;
+      json[r'deviceId'] = null;
     }
-    if (this.type != null) {
-      json[r'type'] = this.type;
+    if (this.measure != null) {
+      json[r'measure'] = this.measure;
     } else {
-      json[r'type'] = null;
-    }
-    if (this.model != null) {
-      json[r'model'] = this.model;
-    } else {
-      json[r'model'] = null;
-    }
-    if (this.battery != null) {
-      json[r'battery'] = this.battery;
-    } else {
-      json[r'battery'] = null;
-    }
-    if (this.created != null) {
-      json[r'created'] = this.created!.toUtc().toIso8601String();
-    } else {
-      json[r'created'] = null;
-    }
-    if (this.measured != null) {
-      json[r'measured'] = this.measured!.toUtc().toIso8601String();
-    } else {
-      json[r'measured'] = null;
+      json[r'measure'] = null;
     }
     if (this.active != null) {
       json[r'active'] = this.active;
@@ -118,10 +78,10 @@ class DeviceDto {
     return json;
   }
 
-  /// Returns a new [DeviceDto] instance and imports its values from
+  /// Returns a new [DeviceMeasureDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static DeviceDto? fromJson(dynamic value) {
+  static DeviceMeasureDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -130,30 +90,26 @@ class DeviceDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DeviceDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DeviceDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "DeviceMeasureDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "DeviceMeasureDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return DeviceDto(
-        deviceid: mapValueOfType<String>(json, r'deviceid'),
-        type: mapValueOfType<String>(json, r'type'),
-        model: mapValueOfType<String>(json, r'model'),
-        battery: mapValueOfType<String>(json, r'battery'),
-        created: mapDateTime(json, r'created', ''),
-        measured: mapDateTime(json, r'measured', ''),
+      return DeviceMeasureDto(
+        deviceId: mapValueOfType<String>(json, r'deviceId'),
+        measure: mapValueOfType<String>(json, r'measure'),
         active: mapValueOfType<bool>(json, r'active'),
       );
     }
     return null;
   }
 
-  static List<DeviceDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DeviceDto>[];
+  static List<DeviceMeasureDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <DeviceMeasureDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = DeviceDto.fromJson(row);
+        final value = DeviceMeasureDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -162,12 +118,12 @@ class DeviceDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, DeviceDto> mapFromJson(dynamic json) {
-    final map = <String, DeviceDto>{};
+  static Map<String, DeviceMeasureDto> mapFromJson(dynamic json) {
+    final map = <String, DeviceMeasureDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DeviceDto.fromJson(entry.value);
+        final value = DeviceMeasureDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -176,13 +132,13 @@ class DeviceDto {
     return map;
   }
 
-  // maps a json object with a list of DeviceDto-objects as value to a dart map
-  static Map<String, List<DeviceDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<DeviceDto>>{};
+  // maps a json object with a list of DeviceMeasureDto-objects as value to a dart map
+  static Map<String, List<DeviceMeasureDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<DeviceMeasureDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DeviceDto.listFromJson(entry.value, growable: growable,);
+        final value = DeviceMeasureDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

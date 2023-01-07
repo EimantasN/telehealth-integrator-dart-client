@@ -195,8 +195,10 @@ class ApiClient {
           return BloodPressureDto.fromJson(value);
         case 'BodyDto':
           return BodyDto.fromJson(value);
-        case 'DeviceDto':
-          return DeviceDto.fromJson(value);
+        case 'DeviceFullDto':
+          return DeviceFullDto.fromJson(value);
+        case 'DeviceMeasureDto':
+          return DeviceMeasureDto.fromJson(value);
         case 'DisableDevicesCmd':
           return DisableDevicesCmd.fromJson(value);
         case 'ECGDto':
@@ -227,6 +229,10 @@ class ApiClient {
           return SleepDataDto.fromJson(value);
         case 'SummaryDto':
           return SummaryDto.fromJson(value);
+        case 'UpdateDeviceCmd':
+          return UpdateDeviceCmd.fromJson(value);
+        case 'UpdateDeviceCmdDevice':
+          return UpdateDeviceCmdDevice.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

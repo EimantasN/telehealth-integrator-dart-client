@@ -41,7 +41,8 @@ part 'model/bar_chart_query.dart';
 part 'model/blood_pressure_data_dto.dart';
 part 'model/blood_pressure_dto.dart';
 part 'model/body_dto.dart';
-part 'model/device_dto.dart';
+part 'model/device_full_dto.dart';
+part 'model/device_measure_dto.dart';
 part 'model/disable_devices_cmd.dart';
 part 'model/ecg_dto.dart';
 part 'model/ecg_list_dto.dart';
@@ -57,6 +58,8 @@ part 'model/get_sleep_data_query_all_of.dart';
 part 'model/heart_rate_dto.dart';
 part 'model/sleep_data_dto.dart';
 part 'model/summary_dto.dart';
+part 'model/update_device_cmd.dart';
+part 'model/update_device_cmd_device.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
