@@ -17,9 +17,16 @@ class SummaryDto {
     this.distance,
     this.sleepScore,
     this.weight,
+    this.muscle,
+    this.water,
     this.heartRate,
     this.dystol,
     this.systol,
+    this.vO2,
+    this.deep,
+    this.light,
+    this.awake,
+    this.totalSleepTime,
     this.lastUpdate,
   });
 
@@ -31,11 +38,25 @@ class SummaryDto {
 
   double? weight;
 
+  double? muscle;
+
+  double? water;
+
   double? heartRate;
 
   double? dystol;
 
   double? systol;
+
+  double? vO2;
+
+  double? deep;
+
+  double? light;
+
+  double? awake;
+
+  double? totalSleepTime;
 
   DateTime? lastUpdate;
 
@@ -45,9 +66,16 @@ class SummaryDto {
      other.distance == distance &&
      other.sleepScore == sleepScore &&
      other.weight == weight &&
+     other.muscle == muscle &&
+     other.water == water &&
      other.heartRate == heartRate &&
      other.dystol == dystol &&
      other.systol == systol &&
+     other.vO2 == vO2 &&
+     other.deep == deep &&
+     other.light == light &&
+     other.awake == awake &&
+     other.totalSleepTime == totalSleepTime &&
      other.lastUpdate == lastUpdate;
 
   @override
@@ -57,13 +85,20 @@ class SummaryDto {
     (distance == null ? 0 : distance!.hashCode) +
     (sleepScore == null ? 0 : sleepScore!.hashCode) +
     (weight == null ? 0 : weight!.hashCode) +
+    (muscle == null ? 0 : muscle!.hashCode) +
+    (water == null ? 0 : water!.hashCode) +
     (heartRate == null ? 0 : heartRate!.hashCode) +
     (dystol == null ? 0 : dystol!.hashCode) +
     (systol == null ? 0 : systol!.hashCode) +
+    (vO2 == null ? 0 : vO2!.hashCode) +
+    (deep == null ? 0 : deep!.hashCode) +
+    (light == null ? 0 : light!.hashCode) +
+    (awake == null ? 0 : awake!.hashCode) +
+    (totalSleepTime == null ? 0 : totalSleepTime!.hashCode) +
     (lastUpdate == null ? 0 : lastUpdate!.hashCode);
 
   @override
-  String toString() => 'SummaryDto[step=$step, distance=$distance, sleepScore=$sleepScore, weight=$weight, heartRate=$heartRate, dystol=$dystol, systol=$systol, lastUpdate=$lastUpdate]';
+  String toString() => 'SummaryDto[step=$step, distance=$distance, sleepScore=$sleepScore, weight=$weight, muscle=$muscle, water=$water, heartRate=$heartRate, dystol=$dystol, systol=$systol, vO2=$vO2, deep=$deep, light=$light, awake=$awake, totalSleepTime=$totalSleepTime, lastUpdate=$lastUpdate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -87,6 +122,16 @@ class SummaryDto {
     } else {
       json[r'weight'] = null;
     }
+    if (this.muscle != null) {
+      json[r'muscle'] = this.muscle;
+    } else {
+      json[r'muscle'] = null;
+    }
+    if (this.water != null) {
+      json[r'water'] = this.water;
+    } else {
+      json[r'water'] = null;
+    }
     if (this.heartRate != null) {
       json[r'heartRate'] = this.heartRate;
     } else {
@@ -101,6 +146,31 @@ class SummaryDto {
       json[r'systol'] = this.systol;
     } else {
       json[r'systol'] = null;
+    }
+    if (this.vO2 != null) {
+      json[r'vO2'] = this.vO2;
+    } else {
+      json[r'vO2'] = null;
+    }
+    if (this.deep != null) {
+      json[r'deep'] = this.deep;
+    } else {
+      json[r'deep'] = null;
+    }
+    if (this.light != null) {
+      json[r'light'] = this.light;
+    } else {
+      json[r'light'] = null;
+    }
+    if (this.awake != null) {
+      json[r'awake'] = this.awake;
+    } else {
+      json[r'awake'] = null;
+    }
+    if (this.totalSleepTime != null) {
+      json[r'totalSleepTime'] = this.totalSleepTime;
+    } else {
+      json[r'totalSleepTime'] = null;
     }
     if (this.lastUpdate != null) {
       json[r'lastUpdate'] = this.lastUpdate!.toUtc().toIso8601String();
@@ -133,9 +203,16 @@ class SummaryDto {
         distance: mapValueOfType<double>(json, r'distance'),
         sleepScore: mapValueOfType<double>(json, r'sleepScore'),
         weight: mapValueOfType<double>(json, r'weight'),
+        muscle: mapValueOfType<double>(json, r'muscle'),
+        water: mapValueOfType<double>(json, r'water'),
         heartRate: mapValueOfType<double>(json, r'heartRate'),
         dystol: mapValueOfType<double>(json, r'dystol'),
         systol: mapValueOfType<double>(json, r'systol'),
+        vO2: mapValueOfType<double>(json, r'vO2'),
+        deep: mapValueOfType<double>(json, r'deep'),
+        light: mapValueOfType<double>(json, r'light'),
+        awake: mapValueOfType<double>(json, r'awake'),
+        totalSleepTime: mapValueOfType<double>(json, r'totalSleepTime'),
         lastUpdate: mapDateTime(json, r'lastUpdate', ''),
       );
     }
