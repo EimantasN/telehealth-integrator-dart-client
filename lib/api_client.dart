@@ -183,26 +183,18 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'ActivityDataDto':
           return ActivityDataDto.fromJson(value);
-        case 'ActivityDto':
-          return ActivityDto.fromJson(value);
         case 'BarChartData':
           return BarChartData.fromJson(value);
         case 'BarChartQuery':
           return BarChartQuery.fromJson(value);
         case 'BloodPressureDataDto':
           return BloodPressureDataDto.fromJson(value);
-        case 'BloodPressureDto':
-          return BloodPressureDto.fromJson(value);
-        case 'BodyDto':
-          return BodyDto.fromJson(value);
         case 'DeviceFullDto':
           return DeviceFullDto.fromJson(value);
         case 'DeviceMeasureDto':
           return DeviceMeasureDto.fromJson(value);
         case 'DisableDevicesCmd':
           return DisableDevicesCmd.fromJson(value);
-        case 'ECGDto':
-          return ECGDto.fromJson(value);
         case 'EcgListDto':
           return EcgListDto.fromJson(value);
         case 'EnableDevicesCmd':
@@ -223,8 +215,6 @@ class ApiClient {
           return GetSleepDataQuery.fromJson(value);
         case 'GetSleepDataQueryAllOf':
           return GetSleepDataQueryAllOf.fromJson(value);
-        case 'HeartRateDto':
-          return HeartRateDto.fromJson(value);
         case 'SleepDataDto':
           return SleepDataDto.fromJson(value);
         case 'SummaryDto':

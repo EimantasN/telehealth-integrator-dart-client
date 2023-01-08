@@ -13,99 +13,99 @@ part of openapi.api;
 class SummaryDto {
   /// Returns a new [SummaryDto] instance.
   SummaryDto({
-    this.activity,
-    this.body,
+    this.step,
+    this.distance,
+    this.sleepScore,
+    this.weight,
     this.heartRate,
-    this.bloodPressure,
-    this.ecg,
+    this.dystol,
+    this.systol,
+    this.lastUpdate,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ActivityDto? activity;
+  double? step;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  BodyDto? body;
+  double? distance;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  HeartRateDto? heartRate;
+  double? sleepScore;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  BloodPressureDto? bloodPressure;
+  double? weight;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ECGDto? ecg;
+  double? heartRate;
+
+  double? dystol;
+
+  double? systol;
+
+  DateTime? lastUpdate;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SummaryDto &&
-     other.activity == activity &&
-     other.body == body &&
+     other.step == step &&
+     other.distance == distance &&
+     other.sleepScore == sleepScore &&
+     other.weight == weight &&
      other.heartRate == heartRate &&
-     other.bloodPressure == bloodPressure &&
-     other.ecg == ecg;
+     other.dystol == dystol &&
+     other.systol == systol &&
+     other.lastUpdate == lastUpdate;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (activity == null ? 0 : activity!.hashCode) +
-    (body == null ? 0 : body!.hashCode) +
+    (step == null ? 0 : step!.hashCode) +
+    (distance == null ? 0 : distance!.hashCode) +
+    (sleepScore == null ? 0 : sleepScore!.hashCode) +
+    (weight == null ? 0 : weight!.hashCode) +
     (heartRate == null ? 0 : heartRate!.hashCode) +
-    (bloodPressure == null ? 0 : bloodPressure!.hashCode) +
-    (ecg == null ? 0 : ecg!.hashCode);
+    (dystol == null ? 0 : dystol!.hashCode) +
+    (systol == null ? 0 : systol!.hashCode) +
+    (lastUpdate == null ? 0 : lastUpdate!.hashCode);
 
   @override
-  String toString() => 'SummaryDto[activity=$activity, body=$body, heartRate=$heartRate, bloodPressure=$bloodPressure, ecg=$ecg]';
+  String toString() => 'SummaryDto[step=$step, distance=$distance, sleepScore=$sleepScore, weight=$weight, heartRate=$heartRate, dystol=$dystol, systol=$systol, lastUpdate=$lastUpdate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.activity != null) {
-      json[r'activity'] = this.activity;
+    if (this.step != null) {
+      json[r'step'] = this.step;
     } else {
-      json[r'activity'] = null;
+      json[r'step'] = null;
     }
-    if (this.body != null) {
-      json[r'body'] = this.body;
+    if (this.distance != null) {
+      json[r'distance'] = this.distance;
     } else {
-      json[r'body'] = null;
+      json[r'distance'] = null;
+    }
+    if (this.sleepScore != null) {
+      json[r'sleepScore'] = this.sleepScore;
+    } else {
+      json[r'sleepScore'] = null;
+    }
+    if (this.weight != null) {
+      json[r'weight'] = this.weight;
+    } else {
+      json[r'weight'] = null;
     }
     if (this.heartRate != null) {
       json[r'heartRate'] = this.heartRate;
     } else {
       json[r'heartRate'] = null;
     }
-    if (this.bloodPressure != null) {
-      json[r'bloodPressure'] = this.bloodPressure;
+    if (this.dystol != null) {
+      json[r'dystol'] = this.dystol;
     } else {
-      json[r'bloodPressure'] = null;
+      json[r'dystol'] = null;
     }
-    if (this.ecg != null) {
-      json[r'ecg'] = this.ecg;
+    if (this.systol != null) {
+      json[r'systol'] = this.systol;
     } else {
-      json[r'ecg'] = null;
+      json[r'systol'] = null;
+    }
+    if (this.lastUpdate != null) {
+      json[r'lastUpdate'] = this.lastUpdate!.toUtc().toIso8601String();
+    } else {
+      json[r'lastUpdate'] = null;
     }
     return json;
   }
@@ -129,11 +129,14 @@ class SummaryDto {
       }());
 
       return SummaryDto(
-        activity: ActivityDto.fromJson(json[r'activity']),
-        body: BodyDto.fromJson(json[r'body']),
-        heartRate: HeartRateDto.fromJson(json[r'heartRate']),
-        bloodPressure: BloodPressureDto.fromJson(json[r'bloodPressure']),
-        ecg: ECGDto.fromJson(json[r'ecg']),
+        step: mapValueOfType<double>(json, r'step'),
+        distance: mapValueOfType<double>(json, r'distance'),
+        sleepScore: mapValueOfType<double>(json, r'sleepScore'),
+        weight: mapValueOfType<double>(json, r'weight'),
+        heartRate: mapValueOfType<double>(json, r'heartRate'),
+        dystol: mapValueOfType<double>(json, r'dystol'),
+        systol: mapValueOfType<double>(json, r'systol'),
+        lastUpdate: mapDateTime(json, r'lastUpdate', ''),
       );
     }
     return null;
