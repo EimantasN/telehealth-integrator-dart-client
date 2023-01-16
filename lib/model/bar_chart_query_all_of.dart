@@ -10,22 +10,13 @@
 
 part of openapi.api;
 
-class BarChartQuery {
-  /// Returns a new [BarChartQuery] instance.
-  BarChartQuery({
-    this.isDoctor,
+class BarChartQueryAllOf {
+  /// Returns a new [BarChartQueryAllOf] instance.
+  BarChartQueryAllOf({
     this.start,
     this.end,
     this.groupByMonth,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isDoctor;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -52,8 +43,7 @@ class BarChartQuery {
   bool? groupByMonth;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is BarChartQuery &&
-     other.isDoctor == isDoctor &&
+  bool operator ==(Object other) => identical(this, other) || other is BarChartQueryAllOf &&
      other.start == start &&
      other.end == end &&
      other.groupByMonth == groupByMonth;
@@ -61,21 +51,15 @@ class BarChartQuery {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (isDoctor == null ? 0 : isDoctor!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (groupByMonth == null ? 0 : groupByMonth!.hashCode);
 
   @override
-  String toString() => 'BarChartQuery[isDoctor=$isDoctor, start=$start, end=$end, groupByMonth=$groupByMonth]';
+  String toString() => 'BarChartQueryAllOf[start=$start, end=$end, groupByMonth=$groupByMonth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.isDoctor != null) {
-      json[r'isDoctor'] = this.isDoctor;
-    } else {
-      json[r'isDoctor'] = null;
-    }
     if (this.start != null) {
       json[r'start'] = this.start!.toUtc().toIso8601String();
     } else {
@@ -94,10 +78,10 @@ class BarChartQuery {
     return json;
   }
 
-  /// Returns a new [BarChartQuery] instance and imports its values from
+  /// Returns a new [BarChartQueryAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static BarChartQuery? fromJson(dynamic value) {
+  static BarChartQueryAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -106,14 +90,13 @@ class BarChartQuery {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BarChartQuery[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BarChartQuery[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "BarChartQueryAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "BarChartQueryAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return BarChartQuery(
-        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
+      return BarChartQueryAllOf(
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
@@ -122,11 +105,11 @@ class BarChartQuery {
     return null;
   }
 
-  static List<BarChartQuery>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <BarChartQuery>[];
+  static List<BarChartQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <BarChartQueryAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = BarChartQuery.fromJson(row);
+        final value = BarChartQueryAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -135,12 +118,12 @@ class BarChartQuery {
     return result.toList(growable: growable);
   }
 
-  static Map<String, BarChartQuery> mapFromJson(dynamic json) {
-    final map = <String, BarChartQuery>{};
+  static Map<String, BarChartQueryAllOf> mapFromJson(dynamic json) {
+    final map = <String, BarChartQueryAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = BarChartQuery.fromJson(entry.value);
+        final value = BarChartQueryAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -149,13 +132,13 @@ class BarChartQuery {
     return map;
   }
 
-  // maps a json object with a list of BarChartQuery-objects as value to a dart map
-  static Map<String, List<BarChartQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<BarChartQuery>>{};
+  // maps a json object with a list of BarChartQueryAllOf-objects as value to a dart map
+  static Map<String, List<BarChartQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<BarChartQueryAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = BarChartQuery.listFromJson(entry.value, growable: growable,);
+        final value = BarChartQueryAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

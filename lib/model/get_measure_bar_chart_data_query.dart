@@ -13,12 +13,20 @@ part of openapi.api;
 class GetMeasureBarChartDataQuery {
   /// Returns a new [GetMeasureBarChartDataQuery] instance.
   GetMeasureBarChartDataQuery({
+    this.isDoctor,
     this.start,
     this.end,
     this.groupByMonth,
-    this.isDoctor,
     this.measure,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isDoctor;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -50,38 +58,35 @@ class GetMeasureBarChartDataQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? isDoctor;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? measure;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetMeasureBarChartDataQuery &&
+     other.isDoctor == isDoctor &&
      other.start == start &&
      other.end == end &&
      other.groupByMonth == groupByMonth &&
-     other.isDoctor == isDoctor &&
      other.measure == measure;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (isDoctor == null ? 0 : isDoctor!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
-    (isDoctor == null ? 0 : isDoctor!.hashCode) +
     (measure == null ? 0 : measure!.hashCode);
 
   @override
-  String toString() => 'GetMeasureBarChartDataQuery[start=$start, end=$end, groupByMonth=$groupByMonth, isDoctor=$isDoctor, measure=$measure]';
+  String toString() => 'GetMeasureBarChartDataQuery[isDoctor=$isDoctor, start=$start, end=$end, groupByMonth=$groupByMonth, measure=$measure]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.isDoctor != null) {
+      json[r'isDoctor'] = this.isDoctor;
+    } else {
+      json[r'isDoctor'] = null;
+    }
     if (this.start != null) {
       json[r'start'] = this.start!.toUtc().toIso8601String();
     } else {
@@ -96,11 +101,6 @@ class GetMeasureBarChartDataQuery {
       json[r'groupByMonth'] = this.groupByMonth;
     } else {
       json[r'groupByMonth'] = null;
-    }
-    if (this.isDoctor != null) {
-      json[r'isDoctor'] = this.isDoctor;
-    } else {
-      json[r'isDoctor'] = null;
     }
     if (this.measure != null) {
       json[r'measure'] = this.measure;
@@ -129,10 +129,10 @@ class GetMeasureBarChartDataQuery {
       }());
 
       return GetMeasureBarChartDataQuery(
+        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
-        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
         measure: mapValueOfType<int>(json, r'measure'),
       );
     }

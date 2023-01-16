@@ -187,6 +187,8 @@ class ApiClient {
           return BarChartData.fromJson(value);
         case 'BarChartQuery':
           return BarChartQuery.fromJson(value);
+        case 'BarChartQueryAllOf':
+          return BarChartQueryAllOf.fromJson(value);
         case 'BloodPressureDataDto':
           return BloodPressureDataDto.fromJson(value);
         case 'DeviceFullDto':
@@ -195,6 +197,8 @@ class ApiClient {
           return DeviceMeasureDto.fromJson(value);
         case 'DisableDevicesCmd':
           return DisableDevicesCmd.fromJson(value);
+        case 'DoctorRequest':
+          return DoctorRequest.fromJson(value);
         case 'EcgListDto':
           return EcgListDto.fromJson(value);
         case 'EnableDevicesCmd':
