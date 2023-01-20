@@ -22,7 +22,7 @@ class DeviceFullDto {
     this.timezone,
     this.lastSessionDate,
     this.created,
-    this.measured,
+    this.lastSynced,
     this.active,
     this.measures = const [],
   });
@@ -105,7 +105,7 @@ class DeviceFullDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? measured;
+  DateTime? lastSynced;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -128,7 +128,7 @@ class DeviceFullDto {
      other.timezone == timezone &&
      other.lastSessionDate == lastSessionDate &&
      other.created == created &&
-     other.measured == measured &&
+     other.lastSynced == lastSynced &&
      other.active == active &&
      other.measures == measures;
 
@@ -144,12 +144,12 @@ class DeviceFullDto {
     (timezone == null ? 0 : timezone!.hashCode) +
     (lastSessionDate == null ? 0 : lastSessionDate!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
-    (measured == null ? 0 : measured!.hashCode) +
+    (lastSynced == null ? 0 : lastSynced!.hashCode) +
     (active == null ? 0 : active!.hashCode) +
     (measures.hashCode);
 
   @override
-  String toString() => 'DeviceFullDto[type=$type, model=$model, modelId=$modelId, battery=$battery, deviceid=$deviceid, hashDeviceid=$hashDeviceid, timezone=$timezone, lastSessionDate=$lastSessionDate, created=$created, measured=$measured, active=$active, measures=$measures]';
+  String toString() => 'DeviceFullDto[type=$type, model=$model, modelId=$modelId, battery=$battery, deviceid=$deviceid, hashDeviceid=$hashDeviceid, timezone=$timezone, lastSessionDate=$lastSessionDate, created=$created, lastSynced=$lastSynced, active=$active, measures=$measures]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -198,10 +198,10 @@ class DeviceFullDto {
     } else {
       json[r'created'] = null;
     }
-    if (this.measured != null) {
-      json[r'measured'] = this.measured!.toUtc().toIso8601String();
+    if (this.lastSynced != null) {
+      json[r'lastSynced'] = this.lastSynced!.toUtc().toIso8601String();
     } else {
-      json[r'measured'] = null;
+      json[r'lastSynced'] = null;
     }
     if (this.active != null) {
       json[r'active'] = this.active;
@@ -240,7 +240,7 @@ class DeviceFullDto {
         timezone: mapValueOfType<String>(json, r'timezone'),
         lastSessionDate: mapValueOfType<int>(json, r'lastSessionDate'),
         created: mapDateTime(json, r'created', ''),
-        measured: mapDateTime(json, r'measured', ''),
+        lastSynced: mapDateTime(json, r'lastSynced', ''),
         active: mapValueOfType<bool>(json, r'active'),
         measures: DeviceMeasureDto.listFromJson(json[r'measures']) ?? const [],
       );
