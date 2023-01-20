@@ -13,30 +13,36 @@ part of openapi.api;
 class UpdateDeviceCmd {
   /// Returns a new [UpdateDeviceCmd] instance.
   UpdateDeviceCmd({
-    this.device,
+    this.deviceId,
+    this.measures = const [],
   });
 
-  UpdateDeviceCmdDevice? device;
+  String? deviceId;
+
+  List<DeviceMeasure> measures;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateDeviceCmd &&
-     other.device == device;
+     other.deviceId == deviceId &&
+     other.measures == measures;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (device == null ? 0 : device!.hashCode);
+    (deviceId == null ? 0 : deviceId!.hashCode) +
+    (measures.hashCode);
 
   @override
-  String toString() => 'UpdateDeviceCmd[device=$device]';
+  String toString() => 'UpdateDeviceCmd[deviceId=$deviceId, measures=$measures]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.device != null) {
-      json[r'device'] = this.device;
+    if (this.deviceId != null) {
+      json[r'deviceId'] = this.deviceId;
     } else {
-      json[r'device'] = null;
+      json[r'deviceId'] = null;
     }
+      json[r'measures'] = this.measures;
     return json;
   }
 
@@ -59,7 +65,8 @@ class UpdateDeviceCmd {
       }());
 
       return UpdateDeviceCmd(
-        device: UpdateDeviceCmdDevice.fromJson(json[r'device']),
+        deviceId: mapValueOfType<String>(json, r'deviceId'),
+        measures: DeviceMeasure.listFromJson(json[r'measures']) ?? const [],
       );
     }
     return null;
