@@ -17,7 +17,10 @@ class SummaryApi {
   final ApiClient apiClient;
 
   /// Performs an HTTP 'GET /api/Summary/Summary' operation and returns the [Response].
-  Future<Response> summarySummaryWithHttpInfo() async {
+  /// Parameters:
+  ///
+  /// * [bool] isDoctor:
+  Future<Response> summarySummaryWithHttpInfo({ bool? isDoctor, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Summary/Summary';
 
@@ -27,6 +30,10 @@ class SummaryApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (isDoctor != null) {
+      queryParams.addAll(_queryParams('', 'IsDoctor', isDoctor));
+    }
 
     const contentTypes = <String>[];
 
@@ -42,8 +49,11 @@ class SummaryApi {
     );
   }
 
-  Future<SummaryDto?> summarySummary() async {
-    final response = await summarySummaryWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [bool] isDoctor:
+  Future<SummaryDto?> summarySummary({ bool? isDoctor, }) async {
+    final response = await summarySummaryWithHttpInfo( isDoctor: isDoctor, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
