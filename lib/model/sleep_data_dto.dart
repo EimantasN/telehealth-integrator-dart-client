@@ -79,17 +79,17 @@ class SleepDataDto {
       }());
 
       return SleepDataDto(
-        awake: BarChartData.listFromJson(json[r'awake']) ?? const [],
-        light: BarChartData.listFromJson(json[r'light']) ?? const [],
-        deep: BarChartData.listFromJson(json[r'deep']) ?? const [],
-        score: BarChartData.listFromJson(json[r'score']) ?? const [],
-        duration: BarChartData.listFromJson(json[r'duration']) ?? const [],
+        awake: BarChartData.listFromJson(json[r'awake']),
+        light: BarChartData.listFromJson(json[r'light']),
+        deep: BarChartData.listFromJson(json[r'deep']),
+        score: BarChartData.listFromJson(json[r'score']),
+        duration: BarChartData.listFromJson(json[r'duration']),
       );
     }
     return null;
   }
 
-  static List<SleepDataDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SleepDataDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SleepDataDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -120,12 +120,10 @@ class SleepDataDto {
   static Map<String, List<SleepDataDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SleepDataDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SleepDataDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SleepDataDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

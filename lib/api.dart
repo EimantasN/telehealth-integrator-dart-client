@@ -27,6 +27,7 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/admin_api.dart';
 part 'api/devices_api.dart';
 part 'api/graph_api.dart';
 part 'api/heart_api.dart';
@@ -57,6 +58,7 @@ part 'model/get_sleep_data_query_all_of.dart';
 part 'model/sleep_data_dto.dart';
 part 'model/summary_dto.dart';
 part 'model/update_device_cmd.dart';
+part 'model/user_sync_dto.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
