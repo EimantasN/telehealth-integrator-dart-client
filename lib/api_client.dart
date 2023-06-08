@@ -205,6 +205,8 @@ class ApiClient {
           return EcgListDto.fromJson(value);
         case 'EnableDevicesCmd':
           return EnableDevicesCmd.fromJson(value);
+        case 'GapDto':
+          return GapDto.fromJson(value);
         case 'GetActivityChartDataQuery':
           return GetActivityChartDataQuery.fromJson(value);
         case 'GetActivityChartDataQueryAllOf':
@@ -229,6 +231,8 @@ class ApiClient {
           return UpdateDeviceCmd.fromJson(value);
         case 'UserSyncDto':
           return UserSyncDto.fromJson(value);
+        case 'WithingsCallDto':
+          return WithingsCallDto.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
