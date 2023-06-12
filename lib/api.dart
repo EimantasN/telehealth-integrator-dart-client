@@ -56,6 +56,7 @@ part 'model/get_measure_bar_chart_data_query.dart';
 part 'model/get_measure_bar_chart_data_query_all_of.dart';
 part 'model/get_sleep_data_query.dart';
 part 'model/get_sleep_data_query_all_of.dart';
+part 'model/resync_user_cmd.dart';
 part 'model/sleep_data_dto.dart';
 part 'model/summary_dto.dart';
 part 'model/update_device_cmd.dart';

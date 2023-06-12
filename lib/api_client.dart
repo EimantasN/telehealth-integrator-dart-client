@@ -223,6 +223,8 @@ class ApiClient {
           return GetSleepDataQuery.fromJson(value);
         case 'GetSleepDataQueryAllOf':
           return GetSleepDataQueryAllOf.fromJson(value);
+        case 'ResyncUserCmd':
+          return ResyncUserCmd.fromJson(value);
         case 'SleepDataDto':
           return SleepDataDto.fromJson(value);
         case 'SummaryDto':
