@@ -16,6 +16,7 @@ class BarChartData {
     this.year,
     this.month,
     this.day,
+    this.hour,
     this.average,
     this.sum,
   });
@@ -38,6 +39,8 @@ class BarChartData {
 
   int? day;
 
+  int? hour;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -59,6 +62,7 @@ class BarChartData {
      other.year == year &&
      other.month == month &&
      other.day == day &&
+     other.hour == hour &&
      other.average == average &&
      other.sum == sum;
 
@@ -68,11 +72,12 @@ class BarChartData {
     (year == null ? 0 : year!.hashCode) +
     (month == null ? 0 : month!.hashCode) +
     (day == null ? 0 : day!.hashCode) +
+    (hour == null ? 0 : hour!.hashCode) +
     (average == null ? 0 : average!.hashCode) +
     (sum == null ? 0 : sum!.hashCode);
 
   @override
-  String toString() => 'BarChartData[year=$year, month=$month, day=$day, average=$average, sum=$sum]';
+  String toString() => 'BarChartData[year=$year, month=$month, day=$day, hour=$hour, average=$average, sum=$sum]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -90,6 +95,11 @@ class BarChartData {
       json[r'day'] = this.day;
     } else {
       json[r'day'] = null;
+    }
+    if (this.hour != null) {
+      json[r'hour'] = this.hour;
+    } else {
+      json[r'hour'] = null;
     }
     if (this.average != null) {
       json[r'average'] = this.average;
@@ -126,6 +136,7 @@ class BarChartData {
         year: mapValueOfType<int>(json, r'year'),
         month: mapValueOfType<int>(json, r'month'),
         day: mapValueOfType<int>(json, r'day'),
+        hour: mapValueOfType<int>(json, r'hour'),
         average: mapValueOfType<double>(json, r'average'),
         sum: mapValueOfType<int>(json, r'sum'),
       );
