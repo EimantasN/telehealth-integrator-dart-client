@@ -231,6 +231,8 @@ class ApiClient {
           return SummaryDto.fromJson(value);
         case 'UpdateDeviceCmd':
           return UpdateDeviceCmd.fromJson(value);
+        case 'UserStatDto':
+          return UserStatDto.fromJson(value);
         case 'UserSyncDto':
           return UserSyncDto.fromJson(value);
         case 'WithingsCallDto':
