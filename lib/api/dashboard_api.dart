@@ -54,7 +54,7 @@ class DashboardApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<UserStatDto>') as List)
         .cast<UserStatDto>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;

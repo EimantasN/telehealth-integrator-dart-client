@@ -74,13 +74,13 @@ class GapDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GapDto &&
-     other.userId == userId &&
-     other.start == start &&
-     other.end == end &&
-     other.collectionName == collectionName &&
-     other.resolved == resolved &&
-     other.insertCount == insertCount &&
-     other.resolvedTime == resolvedTime;
+    other.userId == userId &&
+    other.start == start &&
+    other.end == end &&
+    other.collectionName == collectionName &&
+    other.resolved == resolved &&
+    other.insertCount == insertCount &&
+    other.resolvedTime == resolvedTime;
 
   @override
   int get hashCode =>
@@ -156,12 +156,12 @@ class GapDto {
 
       return GapDto(
         userId: mapValueOfType<String>(json, r'userId'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         collectionName: mapValueOfType<String>(json, r'collectionName'),
         resolved: mapValueOfType<bool>(json, r'resolved'),
         insertCount: mapValueOfType<int>(json, r'insertCount'),
-        resolvedTime: mapDateTime(json, r'resolvedTime', ''),
+        resolvedTime: mapDateTime(json, r'resolvedTime', r''),
       );
     }
     return null;

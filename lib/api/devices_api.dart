@@ -148,7 +148,7 @@ class DevicesApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<DeviceFullDto>') as List)
         .cast<DeviceFullDto>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;

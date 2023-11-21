@@ -53,10 +53,10 @@ class GetBloodPressureDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetBloodPressureDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth;
 
   @override
   int get hashCode =>
@@ -114,8 +114,8 @@ class GetBloodPressureDataQuery {
 
       return GetBloodPressureDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
       );
     }

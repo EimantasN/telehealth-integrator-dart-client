@@ -56,11 +56,11 @@ class UserStatDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserStatDto &&
-     other.userId == userId &&
-     other.value == value &&
-     other.previuos == previuos &&
-     other.type == type &&
-     other.date == date;
+    other.userId == userId &&
+    other.value == value &&
+    other.previuos == previuos &&
+    other.type == type &&
+    other.date == date;
 
   @override
   int get hashCode =>
@@ -127,7 +127,7 @@ class UserStatDto {
         value: mapValueOfType<double>(json, r'value'),
         previuos: mapValueOfType<double>(json, r'previuos'),
         type: mapValueOfType<String>(json, r'type'),
-        date: mapDateTime(json, r'date', ''),
+        date: mapDateTime(json, r'date', r''),
       );
     }
     return null;

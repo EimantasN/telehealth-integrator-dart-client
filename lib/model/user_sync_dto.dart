@@ -35,12 +35,12 @@ class UserSyncDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserSyncDto &&
-     other.userId == userId &&
-     other.lastCheck == lastCheck &&
-     other.sleep == sleep &&
-     other.body == body &&
-     other.activity == activity &&
-     other.heart == heart;
+    other.userId == userId &&
+    other.lastCheck == lastCheck &&
+    other.sleep == sleep &&
+    other.body == body &&
+    other.activity == activity &&
+    other.heart == heart;
 
   @override
   int get hashCode =>
@@ -110,11 +110,11 @@ class UserSyncDto {
 
       return UserSyncDto(
         userId: mapValueOfType<String>(json, r'userId'),
-        lastCheck: mapDateTime(json, r'lastCheck', ''),
-        sleep: mapDateTime(json, r'sleep', ''),
-        body: mapDateTime(json, r'body', ''),
-        activity: mapDateTime(json, r'activity', ''),
-        heart: mapDateTime(json, r'heart', ''),
+        lastCheck: mapDateTime(json, r'lastCheck', r''),
+        sleep: mapDateTime(json, r'sleep', r''),
+        body: mapDateTime(json, r'body', r''),
+        activity: mapDateTime(json, r'activity', r''),
+        heart: mapDateTime(json, r'heart', r''),
       );
     }
     return null;

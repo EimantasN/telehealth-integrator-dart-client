@@ -54,7 +54,7 @@ class AdminApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<GapDto>') as List)
         .cast<GapDto>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;
@@ -145,7 +145,7 @@ class AdminApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<UserSyncDto>') as List)
         .cast<UserSyncDto>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;
@@ -189,7 +189,7 @@ class AdminApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<WithingsCallDto>') as List)
         .cast<WithingsCallDto>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;

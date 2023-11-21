@@ -68,15 +68,15 @@ class GetSleepDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetSleepDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth &&
-     other.awake == awake &&
-     other.light == light &&
-     other.deep == deep &&
-     other.score == score &&
-     other.duration == duration;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth &&
+    other.awake == awake &&
+    other.light == light &&
+    other.deep == deep &&
+    other.score == score &&
+    other.duration == duration;
 
   @override
   int get hashCode =>
@@ -164,8 +164,8 @@ class GetSleepDataQuery {
 
       return GetSleepDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
         awake: mapValueOfType<bool>(json, r'awake'),
         light: mapValueOfType<bool>(json, r'light'),

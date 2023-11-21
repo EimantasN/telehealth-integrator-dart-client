@@ -59,12 +59,12 @@ class BarChartData {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BarChartData &&
-     other.year == year &&
-     other.month == month &&
-     other.day == day &&
-     other.hour == hour &&
-     other.average == average &&
-     other.sum == sum;
+    other.year == year &&
+    other.month == month &&
+    other.day == day &&
+    other.hour == hour &&
+    other.average == average &&
+    other.sum == sum;
 
   @override
   int get hashCode =>

@@ -35,8 +35,8 @@ class WithingsCallDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WithingsCallDto &&
-     other.count == count &&
-     other.date == date;
+    other.count == count &&
+    other.date == date;
 
   @override
   int get hashCode =>

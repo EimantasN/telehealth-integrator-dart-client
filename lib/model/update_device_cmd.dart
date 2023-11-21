@@ -23,8 +23,8 @@ class UpdateDeviceCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateDeviceCmd &&
-     other.deviceId == deviceId &&
-     other.measures == measures;
+    other.deviceId == deviceId &&
+    _deepEquality.equals(other.measures, measures);
 
   @override
   int get hashCode =>

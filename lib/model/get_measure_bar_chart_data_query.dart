@@ -62,11 +62,11 @@ class GetMeasureBarChartDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetMeasureBarChartDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth &&
-     other.measure == measure;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth &&
+    other.measure == measure;
 
   @override
   int get hashCode =>
@@ -130,8 +130,8 @@ class GetMeasureBarChartDataQuery {
 
       return GetMeasureBarChartDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
         measure: mapValueOfType<int>(json, r'measure'),
       );

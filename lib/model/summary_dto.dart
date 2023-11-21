@@ -62,21 +62,21 @@ class SummaryDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SummaryDto &&
-     other.step == step &&
-     other.distance == distance &&
-     other.sleepScore == sleepScore &&
-     other.weight == weight &&
-     other.muscle == muscle &&
-     other.water == water &&
-     other.heartRate == heartRate &&
-     other.dystol == dystol &&
-     other.systol == systol &&
-     other.vO2 == vO2 &&
-     other.deep == deep &&
-     other.light == light &&
-     other.awake == awake &&
-     other.totalSleepTime == totalSleepTime &&
-     other.lastUpdate == lastUpdate;
+    other.step == step &&
+    other.distance == distance &&
+    other.sleepScore == sleepScore &&
+    other.weight == weight &&
+    other.muscle == muscle &&
+    other.water == water &&
+    other.heartRate == heartRate &&
+    other.dystol == dystol &&
+    other.systol == systol &&
+    other.vO2 == vO2 &&
+    other.deep == deep &&
+    other.light == light &&
+    other.awake == awake &&
+    other.totalSleepTime == totalSleepTime &&
+    other.lastUpdate == lastUpdate;
 
   @override
   int get hashCode =>
@@ -213,7 +213,7 @@ class SummaryDto {
         light: mapValueOfType<double>(json, r'light'),
         awake: mapValueOfType<double>(json, r'awake'),
         totalSleepTime: mapValueOfType<double>(json, r'totalSleepTime'),
-        lastUpdate: mapDateTime(json, r'lastUpdate', ''),
+        lastUpdate: mapDateTime(json, r'lastUpdate', r''),
       );
     }
     return null;

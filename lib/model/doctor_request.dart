@@ -26,7 +26,7 @@ class DoctorRequest {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DoctorRequest &&
-     other.isDoctor == isDoctor;
+    other.isDoctor == isDoctor;
 
   @override
   int get hashCode =>

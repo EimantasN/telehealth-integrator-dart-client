@@ -23,8 +23,8 @@ class ActivityDataDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ActivityDataDto &&
-     other.steps == steps &&
-     other.distance == distance;
+    _deepEquality.equals(other.steps, steps) &&
+    _deepEquality.equals(other.distance, distance);
 
   @override
   int get hashCode =>

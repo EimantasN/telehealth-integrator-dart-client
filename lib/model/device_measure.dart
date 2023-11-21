@@ -44,9 +44,9 @@ class DeviceMeasure {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceMeasure &&
-     other.deviceId == deviceId &&
-     other.measure == measure &&
-     other.active == active;
+    other.deviceId == deviceId &&
+    other.measure == measure &&
+    other.active == active;
 
   @override
   int get hashCode =>

@@ -26,7 +26,7 @@ class ResyncUserCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ResyncUserCmd &&
-     other.userId == userId;
+    other.userId == userId;
 
   @override
   int get hashCode =>

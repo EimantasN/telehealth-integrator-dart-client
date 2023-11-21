@@ -23,8 +23,8 @@ class BloodPressureDataDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BloodPressureDataDto &&
-     other.systole == systole &&
-     other.diastole == diastole;
+    _deepEquality.equals(other.systole, systole) &&
+    _deepEquality.equals(other.diastole, diastole);
 
   @override
   int get hashCode =>

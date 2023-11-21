@@ -47,10 +47,10 @@ class EcgListDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EcgListDto &&
-     other.timestamp == timestamp &&
-     other.signalId == signalId &&
-     other.samplingFrequency == samplingFrequency &&
-     other.heartRate == heartRate;
+    other.timestamp == timestamp &&
+    other.signalId == signalId &&
+    other.samplingFrequency == samplingFrequency &&
+    other.heartRate == heartRate;
 
   @override
   int get hashCode =>
@@ -107,7 +107,7 @@ class EcgListDto {
       }());
 
       return EcgListDto(
-        timestamp: mapDateTime(json, r'timestamp', ''),
+        timestamp: mapDateTime(json, r'timestamp', r''),
         signalId: mapValueOfType<int>(json, r'signalId'),
         samplingFrequency: mapValueOfType<int>(json, r'samplingFrequency'),
         heartRate: mapValueOfType<int>(json, r'heartRate'),

@@ -71,12 +71,12 @@ class GetActivityChartDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetActivityChartDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth &&
-     other.steps == steps &&
-     other.distance == distance;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth &&
+    other.steps == steps &&
+    other.distance == distance;
 
   @override
   int get hashCode =>
@@ -146,8 +146,8 @@ class GetActivityChartDataQuery {
 
       return GetActivityChartDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
         steps: mapValueOfType<bool>(json, r'steps'),
         distance: mapValueOfType<bool>(json, r'distance'),

@@ -119,18 +119,18 @@ class DeviceFullDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceFullDto &&
-     other.type == type &&
-     other.model == model &&
-     other.modelId == modelId &&
-     other.battery == battery &&
-     other.deviceid == deviceid &&
-     other.hashDeviceid == hashDeviceid &&
-     other.timezone == timezone &&
-     other.lastSessionDate == lastSessionDate &&
-     other.created == created &&
-     other.lastSynced == lastSynced &&
-     other.active == active &&
-     other.measures == measures;
+    other.type == type &&
+    other.model == model &&
+    other.modelId == modelId &&
+    other.battery == battery &&
+    other.deviceid == deviceid &&
+    other.hashDeviceid == hashDeviceid &&
+    other.timezone == timezone &&
+    other.lastSessionDate == lastSessionDate &&
+    other.created == created &&
+    other.lastSynced == lastSynced &&
+    other.active == active &&
+    _deepEquality.equals(other.measures, measures);
 
   @override
   int get hashCode =>
@@ -239,8 +239,8 @@ class DeviceFullDto {
         hashDeviceid: mapValueOfType<String>(json, r'hashDeviceid'),
         timezone: mapValueOfType<String>(json, r'timezone'),
         lastSessionDate: mapValueOfType<int>(json, r'lastSessionDate'),
-        created: mapDateTime(json, r'created', ''),
-        lastSynced: mapDateTime(json, r'lastSynced', ''),
+        created: mapDateTime(json, r'created', r''),
+        lastSynced: mapDateTime(json, r'lastSynced', r''),
         active: mapValueOfType<bool>(json, r'active'),
         measures: DeviceMeasureDto.listFromJson(json[r'measures']),
       );

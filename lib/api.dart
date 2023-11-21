@@ -14,6 +14,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
@@ -39,7 +40,6 @@ part 'api/wi_things_api.dart';
 part 'model/activity_data_dto.dart';
 part 'model/bar_chart_data.dart';
 part 'model/bar_chart_query.dart';
-part 'model/bar_chart_query_all_of.dart';
 part 'model/blood_pressure_data_dto.dart';
 part 'model/device_full_dto.dart';
 part 'model/device_measure.dart';
@@ -50,13 +50,10 @@ part 'model/ecg_list_dto.dart';
 part 'model/enable_devices_cmd.dart';
 part 'model/gap_dto.dart';
 part 'model/get_activity_chart_data_query.dart';
-part 'model/get_activity_chart_data_query_all_of.dart';
 part 'model/get_blood_pressure_data_query.dart';
 part 'model/get_heart_rate_data_query.dart';
 part 'model/get_measure_bar_chart_data_query.dart';
-part 'model/get_measure_bar_chart_data_query_all_of.dart';
 part 'model/get_sleep_data_query.dart';
-part 'model/get_sleep_data_query_all_of.dart';
 part 'model/resync_user_cmd.dart';
 part 'model/sleep_data_dto.dart';
 part 'model/summary_dto.dart';
@@ -66,11 +63,16 @@ part 'model/user_sync_dto.dart';
 part 'model/withings_call_dto.dart';
 
 
+/// An [ApiClient] instance that uses the default values obtained from
+/// the OpenAPI specification file.
+var defaultApiClient = ApiClient();
+
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
+const _deepEquality = DeepCollectionEquality();
 final _dateFormatter = DateFormat('yyyy-MM-dd');
 final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
 final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-ApiClient defaultApiClient = ApiClient();
+bool _isEpochMarker(String? pattern) => pattern == _dateEpochMarker || pattern == '/$_dateEpochMarker/';

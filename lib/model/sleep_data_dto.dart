@@ -32,11 +32,11 @@ class SleepDataDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SleepDataDto &&
-     other.awake == awake &&
-     other.light == light &&
-     other.deep == deep &&
-     other.score == score &&
-     other.duration == duration;
+    _deepEquality.equals(other.awake, awake) &&
+    _deepEquality.equals(other.light, light) &&
+    _deepEquality.equals(other.deep, deep) &&
+    _deepEquality.equals(other.score, score) &&
+    _deepEquality.equals(other.duration, duration);
 
   @override
   int get hashCode =>

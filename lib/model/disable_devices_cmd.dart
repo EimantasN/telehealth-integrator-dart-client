@@ -20,7 +20,7 @@ class DisableDevicesCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisableDevicesCmd &&
-     other.ids == ids;
+    _deepEquality.equals(other.ids, ids);
 
   @override
   int get hashCode =>
@@ -55,8 +55,8 @@ class DisableDevicesCmd {
       }());
 
       return DisableDevicesCmd(
-        ids: json[r'ids'] is List
-            ? (json[r'ids'] as List).cast<String>()
+        ids: json[r'ids'] is Iterable
+            ? (json[r'ids'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }
