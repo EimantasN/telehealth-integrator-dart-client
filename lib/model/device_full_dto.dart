@@ -119,18 +119,18 @@ class DeviceFullDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceFullDto &&
-     other.type == type &&
-     other.model == model &&
-     other.modelId == modelId &&
-     other.battery == battery &&
-     other.deviceid == deviceid &&
-     other.hashDeviceid == hashDeviceid &&
-     other.timezone == timezone &&
-     other.lastSessionDate == lastSessionDate &&
-     other.created == created &&
-     other.lastSynced == lastSynced &&
-     other.active == active &&
-     other.measures == measures;
+    other.type == type &&
+    other.model == model &&
+    other.modelId == modelId &&
+    other.battery == battery &&
+    other.deviceid == deviceid &&
+    other.hashDeviceid == hashDeviceid &&
+    other.timezone == timezone &&
+    other.lastSessionDate == lastSessionDate &&
+    other.created == created &&
+    other.lastSynced == lastSynced &&
+    other.active == active &&
+    _deepEquality.equals(other.measures, measures);
 
   @override
   int get hashCode =>
@@ -239,16 +239,16 @@ class DeviceFullDto {
         hashDeviceid: mapValueOfType<String>(json, r'hashDeviceid'),
         timezone: mapValueOfType<String>(json, r'timezone'),
         lastSessionDate: mapValueOfType<int>(json, r'lastSessionDate'),
-        created: mapDateTime(json, r'created', ''),
-        lastSynced: mapDateTime(json, r'lastSynced', ''),
+        created: mapDateTime(json, r'created', r''),
+        lastSynced: mapDateTime(json, r'lastSynced', r''),
         active: mapValueOfType<bool>(json, r'active'),
-        measures: DeviceMeasureDto.listFromJson(json[r'measures']) ?? const [],
+        measures: DeviceMeasureDto.listFromJson(json[r'measures']),
       );
     }
     return null;
   }
 
-  static List<DeviceFullDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DeviceFullDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DeviceFullDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -279,12 +279,10 @@ class DeviceFullDto {
   static Map<String, List<DeviceFullDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<DeviceFullDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = DeviceFullDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = DeviceFullDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

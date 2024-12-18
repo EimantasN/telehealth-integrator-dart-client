@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://integrator.viallies.com', this.authentication,});
+  ApiClient({this.basePath = 'https://integrator.telehealth.endev.lt', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -143,19 +143,19 @@ class ApiClient {
     );
   }
 
-  Future<dynamic> deserializeAsync(String json, String targetType, {bool growable = false,}) async =>
+  Future<dynamic> deserializeAsync(String value, String targetType, {bool growable = false,}) async =>
     // ignore: deprecated_member_use_from_same_package
-    deserialize(json, targetType, growable: growable);
+    deserialize(value, targetType, growable: growable);
 
   @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use deserializeAsync() instead.')
-  dynamic deserialize(String json, String targetType, {bool growable = false,}) {
+  dynamic deserialize(String value, String targetType, {bool growable = false,}) {
     // Remove all spaces. Necessary for regular expressions as well.
     targetType = targetType.replaceAll(' ', ''); // ignore: parameter_assignments
 
     // If the expected target type is String, nothing to do...
     return targetType == 'String'
-      ? json
-      : _deserialize(jsonDecode(json), targetType, growable: growable);
+      ? value
+      : fromJson(json.decode(value), targetType, growable: growable);
   }
 
   // ignore: deprecated_member_use_from_same_package
@@ -164,7 +164,8 @@ class ApiClient {
   @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use serializeAsync() instead.')
   String serialize(Object? value) => value == null ? '' : json.encode(value);
 
-  static dynamic _deserialize(dynamic value, String targetType, {bool growable = false}) {
+  /// Returns a native instance of an OpenAPI class matching the [specified type][targetType].
+  static dynamic fromJson(dynamic value, String targetType, {bool growable = false,}) {
     try {
       switch (targetType) {
         case 'String':
@@ -187,8 +188,6 @@ class ApiClient {
           return BarChartData.fromJson(value);
         case 'BarChartQuery':
           return BarChartQuery.fromJson(value);
-        case 'BarChartQueryAllOf':
-          return BarChartQueryAllOf.fromJson(value);
         case 'BloodPressureDataDto':
           return BloodPressureDataDto.fromJson(value);
         case 'DeviceFullDto':
@@ -205,44 +204,48 @@ class ApiClient {
           return EcgListDto.fromJson(value);
         case 'EnableDevicesCmd':
           return EnableDevicesCmd.fromJson(value);
+        case 'GapDto':
+          return GapDto.fromJson(value);
         case 'GetActivityChartDataQuery':
           return GetActivityChartDataQuery.fromJson(value);
-        case 'GetActivityChartDataQueryAllOf':
-          return GetActivityChartDataQueryAllOf.fromJson(value);
         case 'GetBloodPressureDataQuery':
           return GetBloodPressureDataQuery.fromJson(value);
         case 'GetHeartRateDataQuery':
           return GetHeartRateDataQuery.fromJson(value);
         case 'GetMeasureBarChartDataQuery':
           return GetMeasureBarChartDataQuery.fromJson(value);
-        case 'GetMeasureBarChartDataQueryAllOf':
-          return GetMeasureBarChartDataQueryAllOf.fromJson(value);
         case 'GetSleepDataQuery':
           return GetSleepDataQuery.fromJson(value);
-        case 'GetSleepDataQueryAllOf':
-          return GetSleepDataQueryAllOf.fromJson(value);
+        case 'ResyncUserCmd':
+          return ResyncUserCmd.fromJson(value);
         case 'SleepDataDto':
           return SleepDataDto.fromJson(value);
         case 'SummaryDto':
           return SummaryDto.fromJson(value);
         case 'UpdateDeviceCmd':
           return UpdateDeviceCmd.fromJson(value);
+        case 'UserStatDto':
+          return UserStatDto.fromJson(value);
+        case 'UserSyncDto':
+          return UserSyncDto.fromJson(value);
+        case 'WithingsCallDto':
+          return WithingsCallDto.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
             return value
-              .map<dynamic>((dynamic v) => _deserialize(v, match, growable: growable,))
+              .map<dynamic>((dynamic v) => fromJson(v, match, growable: growable,))
               .toList(growable: growable);
           }
           if (value is Set && (match = _regSet.firstMatch(targetType)?.group(1)) != null) {
             return value
-              .map<dynamic>((dynamic v) => _deserialize(v, match, growable: growable,))
+              .map<dynamic>((dynamic v) => fromJson(v, match, growable: growable,))
               .toSet();
           }
           if (value is Map && (match = _regMap.firstMatch(targetType)?.group(1)) != null) {
             return Map<String, dynamic>.fromIterables(
               value.keys.cast<String>(),
-              value.values.map<dynamic>((dynamic v) => _deserialize(v, match, growable: growable,)),
+              value.values.map<dynamic>((dynamic v) => fromJson(v, match, growable: growable,)),
             );
           }
       }
@@ -272,6 +275,17 @@ class DeserializationMessage {
 }
 
 /// Primarily intended for use in an isolate.
+Future<dynamic> decodeAsync(DeserializationMessage message) async {
+  // Remove all spaces. Necessary for regular expressions as well.
+  final targetType = message.targetType.replaceAll(' ', '');
+
+  // If the expected target type is String, nothing to do...
+  return targetType == 'String'
+    ? message.json
+    : json.decode(message.json);
+}
+
+/// Primarily intended for use in an isolate.
 Future<dynamic> deserializeAsync(DeserializationMessage message) async {
   // Remove all spaces. Necessary for regular expressions as well.
   final targetType = message.targetType.replaceAll(' ', '');
@@ -279,8 +293,8 @@ Future<dynamic> deserializeAsync(DeserializationMessage message) async {
   // If the expected target type is String, nothing to do...
   return targetType == 'String'
     ? message.json
-    : ApiClient._deserialize(
-        jsonDecode(message.json),
+    : ApiClient.fromJson(
+        json.decode(message.json),
         targetType,
         growable: message.growable,
       );

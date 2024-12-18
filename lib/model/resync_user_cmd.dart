@@ -10,10 +10,10 @@
 
 part of openapi.api;
 
-class GetMeasureBarChartDataQueryAllOf {
-  /// Returns a new [GetMeasureBarChartDataQueryAllOf] instance.
-  GetMeasureBarChartDataQueryAllOf({
-    this.measure,
+class ResyncUserCmd {
+  /// Returns a new [ResyncUserCmd] instance.
+  ResyncUserCmd({
+    this.userId,
   });
 
   ///
@@ -22,34 +22,34 @@ class GetMeasureBarChartDataQueryAllOf {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? measure;
+  String? userId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetMeasureBarChartDataQueryAllOf &&
-     other.measure == measure;
+  bool operator ==(Object other) => identical(this, other) || other is ResyncUserCmd &&
+    other.userId == userId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (measure == null ? 0 : measure!.hashCode);
+    (userId == null ? 0 : userId!.hashCode);
 
   @override
-  String toString() => 'GetMeasureBarChartDataQueryAllOf[measure=$measure]';
+  String toString() => 'ResyncUserCmd[userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.measure != null) {
-      json[r'measure'] = this.measure;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'measure'] = null;
+      json[r'userId'] = null;
     }
     return json;
   }
 
-  /// Returns a new [GetMeasureBarChartDataQueryAllOf] instance and imports its values from
+  /// Returns a new [ResyncUserCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetMeasureBarChartDataQueryAllOf? fromJson(dynamic value) {
+  static ResyncUserCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -58,24 +58,24 @@ class GetMeasureBarChartDataQueryAllOf {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetMeasureBarChartDataQueryAllOf[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetMeasureBarChartDataQueryAllOf[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ResyncUserCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ResyncUserCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetMeasureBarChartDataQueryAllOf(
-        measure: mapValueOfType<int>(json, r'measure'),
+      return ResyncUserCmd(
+        userId: mapValueOfType<String>(json, r'userId'),
       );
     }
     return null;
   }
 
-  static List<GetMeasureBarChartDataQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetMeasureBarChartDataQueryAllOf>[];
+  static List<ResyncUserCmd> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ResyncUserCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetMeasureBarChartDataQueryAllOf.fromJson(row);
+        final value = ResyncUserCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -84,12 +84,12 @@ class GetMeasureBarChartDataQueryAllOf {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetMeasureBarChartDataQueryAllOf> mapFromJson(dynamic json) {
-    final map = <String, GetMeasureBarChartDataQueryAllOf>{};
+  static Map<String, ResyncUserCmd> mapFromJson(dynamic json) {
+    final map = <String, ResyncUserCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetMeasureBarChartDataQueryAllOf.fromJson(entry.value);
+        final value = ResyncUserCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -98,16 +98,14 @@ class GetMeasureBarChartDataQueryAllOf {
     return map;
   }
 
-  // maps a json object with a list of GetMeasureBarChartDataQueryAllOf-objects as value to a dart map
-  static Map<String, List<GetMeasureBarChartDataQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetMeasureBarChartDataQueryAllOf>>{};
+  // maps a json object with a list of ResyncUserCmd-objects as value to a dart map
+  static Map<String, List<ResyncUserCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ResyncUserCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetMeasureBarChartDataQueryAllOf.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ResyncUserCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

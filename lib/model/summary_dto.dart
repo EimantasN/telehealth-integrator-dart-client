@@ -62,21 +62,21 @@ class SummaryDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SummaryDto &&
-     other.step == step &&
-     other.distance == distance &&
-     other.sleepScore == sleepScore &&
-     other.weight == weight &&
-     other.muscle == muscle &&
-     other.water == water &&
-     other.heartRate == heartRate &&
-     other.dystol == dystol &&
-     other.systol == systol &&
-     other.vO2 == vO2 &&
-     other.deep == deep &&
-     other.light == light &&
-     other.awake == awake &&
-     other.totalSleepTime == totalSleepTime &&
-     other.lastUpdate == lastUpdate;
+    other.step == step &&
+    other.distance == distance &&
+    other.sleepScore == sleepScore &&
+    other.weight == weight &&
+    other.muscle == muscle &&
+    other.water == water &&
+    other.heartRate == heartRate &&
+    other.dystol == dystol &&
+    other.systol == systol &&
+    other.vO2 == vO2 &&
+    other.deep == deep &&
+    other.light == light &&
+    other.awake == awake &&
+    other.totalSleepTime == totalSleepTime &&
+    other.lastUpdate == lastUpdate;
 
   @override
   int get hashCode =>
@@ -213,13 +213,13 @@ class SummaryDto {
         light: mapValueOfType<double>(json, r'light'),
         awake: mapValueOfType<double>(json, r'awake'),
         totalSleepTime: mapValueOfType<double>(json, r'totalSleepTime'),
-        lastUpdate: mapDateTime(json, r'lastUpdate', ''),
+        lastUpdate: mapDateTime(json, r'lastUpdate', r''),
       );
     }
     return null;
   }
 
-  static List<SummaryDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SummaryDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SummaryDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -250,12 +250,10 @@ class SummaryDto {
   static Map<String, List<SummaryDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SummaryDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SummaryDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SummaryDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

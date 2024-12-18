@@ -11,109 +11,15 @@
 part of openapi.api;
 
 
-class DevicesApi {
-  DevicesApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class AdminApi {
+  AdminApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/Devices/Disable' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [DisableDevicesCmd] disableDevicesCmd (required):
-  Future<Response> devicesDisableWithHttpInfo(DisableDevicesCmd disableDevicesCmd,) async {
+  /// Performs an HTTP 'GET /api/Admin/Gaps' operation and returns the [Response].
+  Future<Response> adminGetGapsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Devices/Disable';
-
-    // ignore: prefer_final_locals
-    Object? postBody = disableDevicesCmd;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [DisableDevicesCmd] disableDevicesCmd (required):
-  Future<bool?> devicesDisable(DisableDevicesCmd disableDevicesCmd,) async {
-    final response = await devicesDisableWithHttpInfo(disableDevicesCmd,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
-    
-    }
-    return null;
-  }
-
-  /// Performs an HTTP 'POST /api/Devices/Enable' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [EnableDevicesCmd] enableDevicesCmd (required):
-  Future<Response> devicesEnableWithHttpInfo(EnableDevicesCmd enableDevicesCmd,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/Devices/Enable';
-
-    // ignore: prefer_final_locals
-    Object? postBody = enableDevicesCmd;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [EnableDevicesCmd] enableDevicesCmd (required):
-  Future<bool?> devicesEnable(EnableDevicesCmd enableDevicesCmd,) async {
-    final response = await devicesEnableWithHttpInfo(enableDevicesCmd,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
-    
-    }
-    return null;
-  }
-
-  /// Performs an HTTP 'GET /api/Devices/List' operation and returns the [Response].
-  Future<Response> devicesListWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/Devices/List';
+    final path = r'/api/Admin/Gaps';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -136,8 +42,8 @@ class DevicesApi {
     );
   }
 
-  Future<List<DeviceFullDto>?> devicesList() async {
-    final response = await devicesListWithHttpInfo();
+  Future<List<GapDto>?> adminGetGaps() async {
+    final response = await adminGetGapsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -146,24 +52,24 @@ class DevicesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<DeviceFullDto>') as List)
-        .cast<DeviceFullDto>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<GapDto>') as List)
+        .cast<GapDto>()
         .toList(growable: false);
 
     }
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/Devices/Update' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Admin/ReSync' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [UpdateDeviceCmd] updateDeviceCmd (required):
-  Future<Response> devicesUpdateWithHttpInfo(UpdateDeviceCmd updateDeviceCmd,) async {
+  /// * [ResyncUserCmd] resyncUserCmd (required):
+  Future<Response> adminReSyncWithHttpInfo(ResyncUserCmd resyncUserCmd,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Devices/Update';
+    final path = r'/api/Admin/ReSync';
 
     // ignore: prefer_final_locals
-    Object? postBody = updateDeviceCmd;
+    Object? postBody = resyncUserCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -185,9 +91,9 @@ class DevicesApi {
 
   /// Parameters:
   ///
-  /// * [UpdateDeviceCmd] updateDeviceCmd (required):
-  Future<bool?> devicesUpdate(UpdateDeviceCmd updateDeviceCmd,) async {
-    final response = await devicesUpdateWithHttpInfo(updateDeviceCmd,);
+  /// * [ResyncUserCmd] resyncUserCmd (required):
+  Future<bool?> adminReSync(ResyncUserCmd resyncUserCmd,) async {
+    final response = await adminReSyncWithHttpInfo(resyncUserCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -197,6 +103,94 @@ class DevicesApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /api/Admin/SyncData' operation and returns the [Response].
+  Future<Response> adminSyncDataWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Admin/SyncData';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  Future<List<UserSyncDto>?> adminSyncData() async {
+    final response = await adminSyncDataWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<UserSyncDto>') as List)
+        .cast<UserSyncDto>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /api/Admin/WithingsCalls' operation and returns the [Response].
+  Future<Response> adminWithingsCallsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Admin/WithingsCalls';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  Future<List<WithingsCallDto>?> adminWithingsCalls() async {
+    final response = await adminWithingsCallsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<WithingsCallDto>') as List)
+        .cast<WithingsCallDto>()
+        .toList(growable: false);
+
     }
     return null;
   }

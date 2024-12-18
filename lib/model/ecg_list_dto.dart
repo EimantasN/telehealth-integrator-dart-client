@@ -47,10 +47,10 @@ class EcgListDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EcgListDto &&
-     other.timestamp == timestamp &&
-     other.signalId == signalId &&
-     other.samplingFrequency == samplingFrequency &&
-     other.heartRate == heartRate;
+    other.timestamp == timestamp &&
+    other.signalId == signalId &&
+    other.samplingFrequency == samplingFrequency &&
+    other.heartRate == heartRate;
 
   @override
   int get hashCode =>
@@ -107,7 +107,7 @@ class EcgListDto {
       }());
 
       return EcgListDto(
-        timestamp: mapDateTime(json, r'timestamp', ''),
+        timestamp: mapDateTime(json, r'timestamp', r''),
         signalId: mapValueOfType<int>(json, r'signalId'),
         samplingFrequency: mapValueOfType<int>(json, r'samplingFrequency'),
         heartRate: mapValueOfType<int>(json, r'heartRate'),
@@ -116,7 +116,7 @@ class EcgListDto {
     return null;
   }
 
-  static List<EcgListDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<EcgListDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <EcgListDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -147,12 +147,10 @@ class EcgListDto {
   static Map<String, List<EcgListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<EcgListDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = EcgListDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = EcgListDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

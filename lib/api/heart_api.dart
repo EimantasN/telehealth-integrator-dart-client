@@ -64,7 +64,7 @@ class HeartApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<EcgListDto>') as List)
         .cast<EcgListDto>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;
@@ -118,7 +118,7 @@ class HeartApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<int>') as List)
         .cast<int>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;

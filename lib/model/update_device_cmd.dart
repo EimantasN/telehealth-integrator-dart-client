@@ -23,8 +23,8 @@ class UpdateDeviceCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateDeviceCmd &&
-     other.deviceId == deviceId &&
-     other.measures == measures;
+    other.deviceId == deviceId &&
+    _deepEquality.equals(other.measures, measures);
 
   @override
   int get hashCode =>
@@ -66,13 +66,13 @@ class UpdateDeviceCmd {
 
       return UpdateDeviceCmd(
         deviceId: mapValueOfType<String>(json, r'deviceId'),
-        measures: DeviceMeasure.listFromJson(json[r'measures']) ?? const [],
+        measures: DeviceMeasure.listFromJson(json[r'measures']),
       );
     }
     return null;
   }
 
-  static List<UpdateDeviceCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UpdateDeviceCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateDeviceCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +103,10 @@ class UpdateDeviceCmd {
   static Map<String, List<UpdateDeviceCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<UpdateDeviceCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = UpdateDeviceCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = UpdateDeviceCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

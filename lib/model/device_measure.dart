@@ -44,9 +44,9 @@ class DeviceMeasure {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceMeasure &&
-     other.deviceId == deviceId &&
-     other.measure == measure &&
-     other.active == active;
+    other.deviceId == deviceId &&
+    other.measure == measure &&
+    other.active == active;
 
   @override
   int get hashCode =>
@@ -105,7 +105,7 @@ class DeviceMeasure {
     return null;
   }
 
-  static List<DeviceMeasure>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DeviceMeasure> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DeviceMeasure>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -136,12 +136,10 @@ class DeviceMeasure {
   static Map<String, List<DeviceMeasure>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<DeviceMeasure>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = DeviceMeasure.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = DeviceMeasure.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

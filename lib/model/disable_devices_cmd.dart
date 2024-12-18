@@ -20,7 +20,7 @@ class DisableDevicesCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisableDevicesCmd &&
-     other.ids == ids;
+    _deepEquality.equals(other.ids, ids);
 
   @override
   int get hashCode =>
@@ -55,15 +55,15 @@ class DisableDevicesCmd {
       }());
 
       return DisableDevicesCmd(
-        ids: json[r'ids'] is List
-            ? (json[r'ids'] as List).cast<String>()
+        ids: json[r'ids'] is Iterable
+            ? (json[r'ids'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }
     return null;
   }
 
-  static List<DisableDevicesCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DisableDevicesCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DisableDevicesCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -94,12 +94,10 @@ class DisableDevicesCmd {
   static Map<String, List<DisableDevicesCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<DisableDevicesCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = DisableDevicesCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = DisableDevicesCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

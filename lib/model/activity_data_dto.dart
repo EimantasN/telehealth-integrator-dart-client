@@ -23,8 +23,8 @@ class ActivityDataDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ActivityDataDto &&
-     other.steps == steps &&
-     other.distance == distance;
+    _deepEquality.equals(other.steps, steps) &&
+    _deepEquality.equals(other.distance, distance);
 
   @override
   int get hashCode =>
@@ -61,14 +61,14 @@ class ActivityDataDto {
       }());
 
       return ActivityDataDto(
-        steps: BarChartData.listFromJson(json[r'steps']) ?? const [],
-        distance: BarChartData.listFromJson(json[r'distance']) ?? const [],
+        steps: BarChartData.listFromJson(json[r'steps']),
+        distance: BarChartData.listFromJson(json[r'distance']),
       );
     }
     return null;
   }
 
-  static List<ActivityDataDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ActivityDataDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ActivityDataDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -99,12 +99,10 @@ class ActivityDataDto {
   static Map<String, List<ActivityDataDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ActivityDataDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ActivityDataDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ActivityDataDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

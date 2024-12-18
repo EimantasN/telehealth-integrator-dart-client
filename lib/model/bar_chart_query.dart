@@ -53,10 +53,10 @@ class BarChartQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BarChartQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth;
 
   @override
   int get hashCode =>
@@ -114,15 +114,15 @@ class BarChartQuery {
 
       return BarChartQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
       );
     }
     return null;
   }
 
-  static List<BarChartQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<BarChartQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BarChartQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -153,12 +153,10 @@ class BarChartQuery {
   static Map<String, List<BarChartQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<BarChartQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = BarChartQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = BarChartQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -10,15 +10,14 @@
 
 part of openapi.api;
 
-class BarChartData {
-  /// Returns a new [BarChartData] instance.
-  BarChartData({
-    this.year,
-    this.month,
-    this.day,
-    this.hour,
-    this.average,
-    this.sum,
+class UserStatDto {
+  /// Returns a new [UserStatDto] instance.
+  UserStatDto({
+    this.userId,
+    this.value,
+    this.previuos,
+    this.type,
+    this.date,
   });
 
   ///
@@ -27,7 +26,7 @@ class BarChartData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? year;
+  String? userId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,11 +34,9 @@ class BarChartData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? month;
+  double? value;
 
-  int? day;
-
-  int? hour;
+  double? previuos;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -47,7 +44,7 @@ class BarChartData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? average;
+  String? type;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -55,69 +52,62 @@ class BarChartData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? sum;
+  DateTime? date;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is BarChartData &&
-    other.year == year &&
-    other.month == month &&
-    other.day == day &&
-    other.hour == hour &&
-    other.average == average &&
-    other.sum == sum;
+  bool operator ==(Object other) => identical(this, other) || other is UserStatDto &&
+    other.userId == userId &&
+    other.value == value &&
+    other.previuos == previuos &&
+    other.type == type &&
+    other.date == date;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (year == null ? 0 : year!.hashCode) +
-    (month == null ? 0 : month!.hashCode) +
-    (day == null ? 0 : day!.hashCode) +
-    (hour == null ? 0 : hour!.hashCode) +
-    (average == null ? 0 : average!.hashCode) +
-    (sum == null ? 0 : sum!.hashCode);
+    (userId == null ? 0 : userId!.hashCode) +
+    (value == null ? 0 : value!.hashCode) +
+    (previuos == null ? 0 : previuos!.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
+    (date == null ? 0 : date!.hashCode);
 
   @override
-  String toString() => 'BarChartData[year=$year, month=$month, day=$day, hour=$hour, average=$average, sum=$sum]';
+  String toString() => 'UserStatDto[userId=$userId, value=$value, previuos=$previuos, type=$type, date=$date]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.year != null) {
-      json[r'year'] = this.year;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'year'] = null;
+      json[r'userId'] = null;
     }
-    if (this.month != null) {
-      json[r'month'] = this.month;
+    if (this.value != null) {
+      json[r'value'] = this.value;
     } else {
-      json[r'month'] = null;
+      json[r'value'] = null;
     }
-    if (this.day != null) {
-      json[r'day'] = this.day;
+    if (this.previuos != null) {
+      json[r'previuos'] = this.previuos;
     } else {
-      json[r'day'] = null;
+      json[r'previuos'] = null;
     }
-    if (this.hour != null) {
-      json[r'hour'] = this.hour;
+    if (this.type != null) {
+      json[r'type'] = this.type;
     } else {
-      json[r'hour'] = null;
+      json[r'type'] = null;
     }
-    if (this.average != null) {
-      json[r'average'] = this.average;
+    if (this.date != null) {
+      json[r'date'] = this.date!.toUtc().toIso8601String();
     } else {
-      json[r'average'] = null;
-    }
-    if (this.sum != null) {
-      json[r'sum'] = this.sum;
-    } else {
-      json[r'sum'] = null;
+      json[r'date'] = null;
     }
     return json;
   }
 
-  /// Returns a new [BarChartData] instance and imports its values from
+  /// Returns a new [UserStatDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static BarChartData? fromJson(dynamic value) {
+  static UserStatDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -126,29 +116,28 @@ class BarChartData {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BarChartData[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BarChartData[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UserStatDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UserStatDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return BarChartData(
-        year: mapValueOfType<int>(json, r'year'),
-        month: mapValueOfType<int>(json, r'month'),
-        day: mapValueOfType<int>(json, r'day'),
-        hour: mapValueOfType<int>(json, r'hour'),
-        average: mapValueOfType<double>(json, r'average'),
-        sum: mapValueOfType<int>(json, r'sum'),
+      return UserStatDto(
+        userId: mapValueOfType<String>(json, r'userId'),
+        value: mapValueOfType<double>(json, r'value'),
+        previuos: mapValueOfType<double>(json, r'previuos'),
+        type: mapValueOfType<String>(json, r'type'),
+        date: mapDateTime(json, r'date', r''),
       );
     }
     return null;
   }
 
-  static List<BarChartData> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <BarChartData>[];
+  static List<UserStatDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserStatDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = BarChartData.fromJson(row);
+        final value = UserStatDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -157,12 +146,12 @@ class BarChartData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, BarChartData> mapFromJson(dynamic json) {
-    final map = <String, BarChartData>{};
+  static Map<String, UserStatDto> mapFromJson(dynamic json) {
+    final map = <String, UserStatDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = BarChartData.fromJson(entry.value);
+        final value = UserStatDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -171,14 +160,14 @@ class BarChartData {
     return map;
   }
 
-  // maps a json object with a list of BarChartData-objects as value to a dart map
-  static Map<String, List<BarChartData>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<BarChartData>>{};
+  // maps a json object with a list of UserStatDto-objects as value to a dart map
+  static Map<String, List<UserStatDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UserStatDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = BarChartData.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UserStatDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

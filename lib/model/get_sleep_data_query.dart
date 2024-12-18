@@ -68,15 +68,15 @@ class GetSleepDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetSleepDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth &&
-     other.awake == awake &&
-     other.light == light &&
-     other.deep == deep &&
-     other.score == score &&
-     other.duration == duration;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth &&
+    other.awake == awake &&
+    other.light == light &&
+    other.deep == deep &&
+    other.score == score &&
+    other.duration == duration;
 
   @override
   int get hashCode =>
@@ -164,8 +164,8 @@ class GetSleepDataQuery {
 
       return GetSleepDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
         awake: mapValueOfType<bool>(json, r'awake'),
         light: mapValueOfType<bool>(json, r'light'),
@@ -177,7 +177,7 @@ class GetSleepDataQuery {
     return null;
   }
 
-  static List<GetSleepDataQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GetSleepDataQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetSleepDataQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -208,12 +208,10 @@ class GetSleepDataQuery {
   static Map<String, List<GetSleepDataQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetSleepDataQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetSleepDataQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = GetSleepDataQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

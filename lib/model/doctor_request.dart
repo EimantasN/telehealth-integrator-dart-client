@@ -26,7 +26,7 @@ class DoctorRequest {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DoctorRequest &&
-     other.isDoctor == isDoctor;
+    other.isDoctor == isDoctor;
 
   @override
   int get hashCode =>
@@ -71,7 +71,7 @@ class DoctorRequest {
     return null;
   }
 
-  static List<DoctorRequest>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DoctorRequest> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DoctorRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -102,12 +102,10 @@ class DoctorRequest {
   static Map<String, List<DoctorRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<DoctorRequest>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = DoctorRequest.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = DoctorRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -10,14 +10,16 @@
 
 part of openapi.api;
 
-class GetMeasureBarChartDataQuery {
-  /// Returns a new [GetMeasureBarChartDataQuery] instance.
-  GetMeasureBarChartDataQuery({
-    this.isDoctor,
+class GapDto {
+  /// Returns a new [GapDto] instance.
+  GapDto({
+    this.userId,
     this.start,
     this.end,
-    this.groupByMonth,
-    this.measure,
+    this.collectionName,
+    this.resolved,
+    this.insertCount,
+    this.resolvedTime,
   });
 
   ///
@@ -26,7 +28,7 @@ class GetMeasureBarChartDataQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? isDoctor;
+  String? userId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -50,7 +52,7 @@ class GetMeasureBarChartDataQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? groupByMonth;
+  String? collectionName;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -58,34 +60,48 @@ class GetMeasureBarChartDataQuery {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? measure;
+  bool? resolved;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? insertCount;
+
+  DateTime? resolvedTime;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetMeasureBarChartDataQuery &&
-    other.isDoctor == isDoctor &&
+  bool operator ==(Object other) => identical(this, other) || other is GapDto &&
+    other.userId == userId &&
     other.start == start &&
     other.end == end &&
-    other.groupByMonth == groupByMonth &&
-    other.measure == measure;
+    other.collectionName == collectionName &&
+    other.resolved == resolved &&
+    other.insertCount == insertCount &&
+    other.resolvedTime == resolvedTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (isDoctor == null ? 0 : isDoctor!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
-    (groupByMonth == null ? 0 : groupByMonth!.hashCode) +
-    (measure == null ? 0 : measure!.hashCode);
+    (collectionName == null ? 0 : collectionName!.hashCode) +
+    (resolved == null ? 0 : resolved!.hashCode) +
+    (insertCount == null ? 0 : insertCount!.hashCode) +
+    (resolvedTime == null ? 0 : resolvedTime!.hashCode);
 
   @override
-  String toString() => 'GetMeasureBarChartDataQuery[isDoctor=$isDoctor, start=$start, end=$end, groupByMonth=$groupByMonth, measure=$measure]';
+  String toString() => 'GapDto[userId=$userId, start=$start, end=$end, collectionName=$collectionName, resolved=$resolved, insertCount=$insertCount, resolvedTime=$resolvedTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.isDoctor != null) {
-      json[r'isDoctor'] = this.isDoctor;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'isDoctor'] = null;
+      json[r'userId'] = null;
     }
     if (this.start != null) {
       json[r'start'] = this.start!.toUtc().toIso8601String();
@@ -97,23 +113,33 @@ class GetMeasureBarChartDataQuery {
     } else {
       json[r'end'] = null;
     }
-    if (this.groupByMonth != null) {
-      json[r'groupByMonth'] = this.groupByMonth;
+    if (this.collectionName != null) {
+      json[r'collectionName'] = this.collectionName;
     } else {
-      json[r'groupByMonth'] = null;
+      json[r'collectionName'] = null;
     }
-    if (this.measure != null) {
-      json[r'measure'] = this.measure;
+    if (this.resolved != null) {
+      json[r'resolved'] = this.resolved;
     } else {
-      json[r'measure'] = null;
+      json[r'resolved'] = null;
+    }
+    if (this.insertCount != null) {
+      json[r'insertCount'] = this.insertCount;
+    } else {
+      json[r'insertCount'] = null;
+    }
+    if (this.resolvedTime != null) {
+      json[r'resolvedTime'] = this.resolvedTime!.toUtc().toIso8601String();
+    } else {
+      json[r'resolvedTime'] = null;
     }
     return json;
   }
 
-  /// Returns a new [GetMeasureBarChartDataQuery] instance and imports its values from
+  /// Returns a new [GapDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetMeasureBarChartDataQuery? fromJson(dynamic value) {
+  static GapDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -122,28 +148,30 @@ class GetMeasureBarChartDataQuery {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetMeasureBarChartDataQuery[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetMeasureBarChartDataQuery[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GapDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GapDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetMeasureBarChartDataQuery(
-        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
+      return GapDto(
+        userId: mapValueOfType<String>(json, r'userId'),
         start: mapDateTime(json, r'start', r''),
         end: mapDateTime(json, r'end', r''),
-        groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
-        measure: mapValueOfType<int>(json, r'measure'),
+        collectionName: mapValueOfType<String>(json, r'collectionName'),
+        resolved: mapValueOfType<bool>(json, r'resolved'),
+        insertCount: mapValueOfType<int>(json, r'insertCount'),
+        resolvedTime: mapDateTime(json, r'resolvedTime', r''),
       );
     }
     return null;
   }
 
-  static List<GetMeasureBarChartDataQuery> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetMeasureBarChartDataQuery>[];
+  static List<GapDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GapDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetMeasureBarChartDataQuery.fromJson(row);
+        final value = GapDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -152,12 +180,12 @@ class GetMeasureBarChartDataQuery {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetMeasureBarChartDataQuery> mapFromJson(dynamic json) {
-    final map = <String, GetMeasureBarChartDataQuery>{};
+  static Map<String, GapDto> mapFromJson(dynamic json) {
+    final map = <String, GapDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetMeasureBarChartDataQuery.fromJson(entry.value);
+        final value = GapDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -166,14 +194,14 @@ class GetMeasureBarChartDataQuery {
     return map;
   }
 
-  // maps a json object with a list of GetMeasureBarChartDataQuery-objects as value to a dart map
-  static Map<String, List<GetMeasureBarChartDataQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetMeasureBarChartDataQuery>>{};
+  // maps a json object with a list of GapDto-objects as value to a dart map
+  static Map<String, List<GapDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GapDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GetMeasureBarChartDataQuery.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = GapDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

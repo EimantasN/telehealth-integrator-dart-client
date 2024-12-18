@@ -32,11 +32,11 @@ class SleepDataDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SleepDataDto &&
-     other.awake == awake &&
-     other.light == light &&
-     other.deep == deep &&
-     other.score == score &&
-     other.duration == duration;
+    _deepEquality.equals(other.awake, awake) &&
+    _deepEquality.equals(other.light, light) &&
+    _deepEquality.equals(other.deep, deep) &&
+    _deepEquality.equals(other.score, score) &&
+    _deepEquality.equals(other.duration, duration);
 
   @override
   int get hashCode =>
@@ -79,17 +79,17 @@ class SleepDataDto {
       }());
 
       return SleepDataDto(
-        awake: BarChartData.listFromJson(json[r'awake']) ?? const [],
-        light: BarChartData.listFromJson(json[r'light']) ?? const [],
-        deep: BarChartData.listFromJson(json[r'deep']) ?? const [],
-        score: BarChartData.listFromJson(json[r'score']) ?? const [],
-        duration: BarChartData.listFromJson(json[r'duration']) ?? const [],
+        awake: BarChartData.listFromJson(json[r'awake']),
+        light: BarChartData.listFromJson(json[r'light']),
+        deep: BarChartData.listFromJson(json[r'deep']),
+        score: BarChartData.listFromJson(json[r'score']),
+        duration: BarChartData.listFromJson(json[r'duration']),
       );
     }
     return null;
   }
 
-  static List<SleepDataDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SleepDataDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SleepDataDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -120,12 +120,10 @@ class SleepDataDto {
   static Map<String, List<SleepDataDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SleepDataDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SleepDataDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SleepDataDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

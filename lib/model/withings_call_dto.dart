@@ -10,11 +10,11 @@
 
 part of openapi.api;
 
-class GetActivityChartDataQueryAllOf {
-  /// Returns a new [GetActivityChartDataQueryAllOf] instance.
-  GetActivityChartDataQueryAllOf({
-    this.steps,
-    this.distance,
+class WithingsCallDto {
+  /// Returns a new [WithingsCallDto] instance.
+  WithingsCallDto({
+    this.count,
+    this.date,
   });
 
   ///
@@ -23,7 +23,7 @@ class GetActivityChartDataQueryAllOf {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? steps;
+  int? count;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -31,41 +31,41 @@ class GetActivityChartDataQueryAllOf {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? distance;
+  String? date;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetActivityChartDataQueryAllOf &&
-     other.steps == steps &&
-     other.distance == distance;
+  bool operator ==(Object other) => identical(this, other) || other is WithingsCallDto &&
+    other.count == count &&
+    other.date == date;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (steps == null ? 0 : steps!.hashCode) +
-    (distance == null ? 0 : distance!.hashCode);
+    (count == null ? 0 : count!.hashCode) +
+    (date == null ? 0 : date!.hashCode);
 
   @override
-  String toString() => 'GetActivityChartDataQueryAllOf[steps=$steps, distance=$distance]';
+  String toString() => 'WithingsCallDto[count=$count, date=$date]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.steps != null) {
-      json[r'steps'] = this.steps;
+    if (this.count != null) {
+      json[r'count'] = this.count;
     } else {
-      json[r'steps'] = null;
+      json[r'count'] = null;
     }
-    if (this.distance != null) {
-      json[r'distance'] = this.distance;
+    if (this.date != null) {
+      json[r'date'] = this.date;
     } else {
-      json[r'distance'] = null;
+      json[r'date'] = null;
     }
     return json;
   }
 
-  /// Returns a new [GetActivityChartDataQueryAllOf] instance and imports its values from
+  /// Returns a new [WithingsCallDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetActivityChartDataQueryAllOf? fromJson(dynamic value) {
+  static WithingsCallDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -74,25 +74,25 @@ class GetActivityChartDataQueryAllOf {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetActivityChartDataQueryAllOf[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetActivityChartDataQueryAllOf[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "WithingsCallDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "WithingsCallDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetActivityChartDataQueryAllOf(
-        steps: mapValueOfType<bool>(json, r'steps'),
-        distance: mapValueOfType<bool>(json, r'distance'),
+      return WithingsCallDto(
+        count: mapValueOfType<int>(json, r'count'),
+        date: mapValueOfType<String>(json, r'date'),
       );
     }
     return null;
   }
 
-  static List<GetActivityChartDataQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetActivityChartDataQueryAllOf>[];
+  static List<WithingsCallDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WithingsCallDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetActivityChartDataQueryAllOf.fromJson(row);
+        final value = WithingsCallDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +101,12 @@ class GetActivityChartDataQueryAllOf {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetActivityChartDataQueryAllOf> mapFromJson(dynamic json) {
-    final map = <String, GetActivityChartDataQueryAllOf>{};
+  static Map<String, WithingsCallDto> mapFromJson(dynamic json) {
+    final map = <String, WithingsCallDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetActivityChartDataQueryAllOf.fromJson(entry.value);
+        final value = WithingsCallDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,16 +115,14 @@ class GetActivityChartDataQueryAllOf {
     return map;
   }
 
-  // maps a json object with a list of GetActivityChartDataQueryAllOf-objects as value to a dart map
-  static Map<String, List<GetActivityChartDataQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetActivityChartDataQueryAllOf>>{};
+  // maps a json object with a list of WithingsCallDto-objects as value to a dart map
+  static Map<String, List<WithingsCallDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<WithingsCallDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetActivityChartDataQueryAllOf.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = WithingsCallDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

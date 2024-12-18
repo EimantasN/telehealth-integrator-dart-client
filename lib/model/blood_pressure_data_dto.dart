@@ -23,8 +23,8 @@ class BloodPressureDataDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BloodPressureDataDto &&
-     other.systole == systole &&
-     other.diastole == diastole;
+    _deepEquality.equals(other.systole, systole) &&
+    _deepEquality.equals(other.diastole, diastole);
 
   @override
   int get hashCode =>
@@ -61,14 +61,14 @@ class BloodPressureDataDto {
       }());
 
       return BloodPressureDataDto(
-        systole: BarChartData.listFromJson(json[r'systole']) ?? const [],
-        diastole: BarChartData.listFromJson(json[r'diastole']) ?? const [],
+        systole: BarChartData.listFromJson(json[r'systole']),
+        diastole: BarChartData.listFromJson(json[r'diastole']),
       );
     }
     return null;
   }
 
-  static List<BloodPressureDataDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<BloodPressureDataDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BloodPressureDataDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -99,12 +99,10 @@ class BloodPressureDataDto {
   static Map<String, List<BloodPressureDataDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<BloodPressureDataDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = BloodPressureDataDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = BloodPressureDataDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

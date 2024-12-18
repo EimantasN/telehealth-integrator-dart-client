@@ -53,10 +53,10 @@ class GetBloodPressureDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetBloodPressureDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth;
 
   @override
   int get hashCode =>
@@ -114,15 +114,15 @@ class GetBloodPressureDataQuery {
 
       return GetBloodPressureDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
       );
     }
     return null;
   }
 
-  static List<GetBloodPressureDataQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GetBloodPressureDataQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetBloodPressureDataQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -153,12 +153,10 @@ class GetBloodPressureDataQuery {
   static Map<String, List<GetBloodPressureDataQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetBloodPressureDataQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetBloodPressureDataQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = GetBloodPressureDataQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

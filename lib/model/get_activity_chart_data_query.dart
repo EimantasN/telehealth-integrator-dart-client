@@ -71,12 +71,12 @@ class GetActivityChartDataQuery {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetActivityChartDataQuery &&
-     other.isDoctor == isDoctor &&
-     other.start == start &&
-     other.end == end &&
-     other.groupByMonth == groupByMonth &&
-     other.steps == steps &&
-     other.distance == distance;
+    other.isDoctor == isDoctor &&
+    other.start == start &&
+    other.end == end &&
+    other.groupByMonth == groupByMonth &&
+    other.steps == steps &&
+    other.distance == distance;
 
   @override
   int get hashCode =>
@@ -146,8 +146,8 @@ class GetActivityChartDataQuery {
 
       return GetActivityChartDataQuery(
         isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
-        start: mapDateTime(json, r'start', ''),
-        end: mapDateTime(json, r'end', ''),
+        start: mapDateTime(json, r'start', r''),
+        end: mapDateTime(json, r'end', r''),
         groupByMonth: mapValueOfType<bool>(json, r'groupByMonth'),
         steps: mapValueOfType<bool>(json, r'steps'),
         distance: mapValueOfType<bool>(json, r'distance'),
@@ -156,7 +156,7 @@ class GetActivityChartDataQuery {
     return null;
   }
 
-  static List<GetActivityChartDataQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GetActivityChartDataQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetActivityChartDataQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -187,12 +187,10 @@ class GetActivityChartDataQuery {
   static Map<String, List<GetActivityChartDataQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetActivityChartDataQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetActivityChartDataQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = GetActivityChartDataQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -154,7 +154,7 @@ class GraphApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<BarChartData>') as List)
         .cast<BarChartData>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;
@@ -204,7 +204,7 @@ class GraphApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<BarChartData>') as List)
         .cast<BarChartData>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;
