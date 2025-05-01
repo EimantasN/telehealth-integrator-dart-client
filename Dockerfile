@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 FROM container.endev.lt/dart-client-builder:2025-05-01
 
 ARG GIT_REPO
@@ -26,3 +27,33 @@ RUN git config --global user.name "$NAME"
 RUN git add .
 RUN git commit --allow-empty -m "$COMMIT"
 RUN git push -f $GIT_REPO
+=======
+FROM container.endev.lt/dart-client-builder:2025-05-01
+
+ARG GIT_REPO
+ARG GIT_BRANCH
+ARG COMMIT
+ARG SWAGGERURL
+ARG EMAIL
+ARG NAME
+
+COPY . /src
+
+WORKDIR /src
+RUN git checkout -B $GIT_BRANCH
+
+RUN echo "SWAGGERURL is: $SWAGGERURL"
+
+RUN npx @openapitools/openapi-generator-cli generate -g dart -i $SWAGGERURL -o /src/generated
+
+# Renew generated files
+RUN rm -rf /src/lib
+RUN cp -r /src/generated/lib /src
+
+RUN git config --global user.email "$EMAIL"
+RUN git config --global user.name "$NAME"
+
+RUN git add .
+RUN git commit --allow-empty -m "$COMMIT"
+RUN git push -f $GIT_REPO
+>>>>>>> 7c87a8494de0363c8c4a4930eaee8d7402516364

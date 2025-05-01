@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -48,13 +48,11 @@ part 'model/disable_devices_cmd.dart';
 part 'model/doctor_request.dart';
 part 'model/ecg_list_dto.dart';
 part 'model/enable_devices_cmd.dart';
-part 'model/gap_dto.dart';
 part 'model/get_activity_chart_data_query.dart';
 part 'model/get_blood_pressure_data_query.dart';
 part 'model/get_heart_rate_data_query.dart';
 part 'model/get_measure_bar_chart_data_query.dart';
 part 'model/get_sleep_data_query.dart';
-part 'model/resync_user_cmd.dart';
 part 'model/sleep_data_dto.dart';
 part 'model/summary_dto.dart';
 part 'model/update_device_cmd.dart';
