@@ -11,4 +11,3 @@ RUN apt install -y nodejs git npm default-jre && \
     apt clean
 
 RUN npm install
-RUN npm install -g @openapitools/openapi-generator-cli
