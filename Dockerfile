@@ -1,7 +1,5 @@
 FROM container.endev.lt/dart-client-builder:2025-05-01
 
-USER 0
-
 ARG GIT_REPO
 ARG GIT_BRANCH
 ARG COMMIT
