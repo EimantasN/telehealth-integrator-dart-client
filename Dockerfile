@@ -1,16 +1,4 @@
-FROM ubuntu:20.04
-
-LABEL maintainer="noreika.eimantas@gmail.com"
-LABEL version="0.1"
-LABEL description="This is simple docker image what releases dart package from open api swagger config"
-
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN apt update
-RUN apt install -y nodejs git npm default-jre && \
-    apt clean
-
-RUN npm install
+FROM container.endev.lt/dart-client-builder:2025-05-01
 
 ARG GIT_REPO
 ARG GIT_BRANCH

@@ -25,3 +25,4 @@ openapitools.json
 generated
 node_modules
 *.vsidx
+/.vs
