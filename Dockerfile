@@ -13,7 +13,7 @@ WORKDIR /src
 RUN git checkout -B $GIT_BRANCH
 
 RUN echo "SWAGGERURL is: $SWAGGERURL"
-RUN npx @openapitools/openapi-generator-cli version
+RUN npx --version && node --version && echo "Running generator..." && npx @openapitools/openapi-generator-cli version || echo "Generator failed"
 
 RUN npx @openapitools/openapi-generator-cli generate -g dart -i $SWAGGERURL -o /src/generated
 
