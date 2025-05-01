@@ -1,4 +1,4 @@
-FROM container.endev.lt/dart-client-builder:2022-06-02 as build-env
+FROM container.endev.lt/dart-client-builder:2025-05-01 as build-env
 ARG GIT_REPO
 ARG GIT_BRANCH
 ARG COMMIT
