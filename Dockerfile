@@ -1,4 +1,4 @@
-FROM container.endev.lt/dart-client-builder:2025-05-01
+FROM container.endev.lt/dart-client-builder:2025-05-02
 
 ARG GIT_REPO
 ARG GIT_BRANCH
@@ -11,12 +11,6 @@ COPY . /src
 
 WORKDIR /src
 RUN git checkout -B $GIT_BRANCH
-
-RUN npm install -g @openapitools/openapi-generator-cli@2.5.1
-
-RUN echo "SWAGGERURL is: $SWAGGERURL"
-
-RUN npx --version && node --version && echo "Running generator..." && npx @openapitools/openapi-generator-cli version || echo "Generator failed"
 
 RUN npx @openapitools/openapi-generator-cli generate -g dart -i $SWAGGERURL -o /src/generated
 

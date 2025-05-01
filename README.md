@@ -3,6 +3,6 @@ Dart client for integrator viallies
 
 BUILD
 
-docker build -t container.endev.lt/dart-client-builder:2025-05-01 -f ./Dockerfile.base .
+docker build -t container.endev.lt/dart-client-builder:2025-05-02 -f ./Dockerfile.base .
 
-docker push container.endev.lt/dart-client-builder:2025-05-01
+docker push container.endev.lt/dart-client-builder:2025-05-02
