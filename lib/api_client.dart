@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://integrator.telehealth.endev.lt', this.authentication,});
+  ApiClient({this.basePath = 'https://integrator.viallies.endev.lt', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -204,8 +204,6 @@ class ApiClient {
           return EcgListDto.fromJson(value);
         case 'EnableDevicesCmd':
           return EnableDevicesCmd.fromJson(value);
-        case 'GapDto':
-          return GapDto.fromJson(value);
         case 'GetActivityChartDataQuery':
           return GetActivityChartDataQuery.fromJson(value);
         case 'GetBloodPressureDataQuery':
@@ -216,8 +214,6 @@ class ApiClient {
           return GetMeasureBarChartDataQuery.fromJson(value);
         case 'GetSleepDataQuery':
           return GetSleepDataQuery.fromJson(value);
-        case 'ResyncUserCmd':
-          return ResyncUserCmd.fromJson(value);
         case 'SleepDataDto':
           return SleepDataDto.fromJson(value);
         case 'SummaryDto':

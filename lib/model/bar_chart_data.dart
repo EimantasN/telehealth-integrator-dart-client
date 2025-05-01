@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,6 +19,7 @@ class BarChartData {
     this.hour,
     this.average,
     this.sum,
+    this.deviceId,
   });
 
   ///
@@ -57,6 +58,14 @@ class BarChartData {
   ///
   int? sum;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? deviceId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BarChartData &&
     other.year == year &&
@@ -64,7 +73,8 @@ class BarChartData {
     other.day == day &&
     other.hour == hour &&
     other.average == average &&
-    other.sum == sum;
+    other.sum == sum &&
+    other.deviceId == deviceId;
 
   @override
   int get hashCode =>
@@ -74,10 +84,11 @@ class BarChartData {
     (day == null ? 0 : day!.hashCode) +
     (hour == null ? 0 : hour!.hashCode) +
     (average == null ? 0 : average!.hashCode) +
-    (sum == null ? 0 : sum!.hashCode);
+    (sum == null ? 0 : sum!.hashCode) +
+    (deviceId == null ? 0 : deviceId!.hashCode);
 
   @override
-  String toString() => 'BarChartData[year=$year, month=$month, day=$day, hour=$hour, average=$average, sum=$sum]';
+  String toString() => 'BarChartData[year=$year, month=$month, day=$day, hour=$hour, average=$average, sum=$sum, deviceId=$deviceId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -111,6 +122,11 @@ class BarChartData {
     } else {
       json[r'sum'] = null;
     }
+    if (this.deviceId != null) {
+      json[r'deviceId'] = this.deviceId;
+    } else {
+      json[r'deviceId'] = null;
+    }
     return json;
   }
 
@@ -139,6 +155,7 @@ class BarChartData {
         hour: mapValueOfType<int>(json, r'hour'),
         average: mapValueOfType<double>(json, r'average'),
         sum: mapValueOfType<int>(json, r'sum'),
+        deviceId: mapValueOfType<String>(json, r'deviceId'),
       );
     }
     return null;
