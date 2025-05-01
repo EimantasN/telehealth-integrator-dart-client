@@ -11,6 +11,8 @@ COPY . /src
 WORKDIR /src
 RUN git checkout -B $GIT_BRANCH
 
+RUN echo "SWAGGERURL is: $SWAGGERURL"
+
 RUN npx @openapitools/openapi-generator-cli generate -g dart -i $SWAGGERURL -o /src/generated
 # Renew generated files
 RUN rm -rf /src/lib
